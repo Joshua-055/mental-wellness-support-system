@@ -1,9 +1,3 @@
-<?php
-$pageTitle = 'Welcome Back | Mindful';
-$pageStyles = ['login'];
-require_once __DIR__ . '/../includes/header.php';
-?>
-
 <main class="login-page">
     <div class="ambient ambient-blue" aria-hidden="true"></div>
     <div class="ambient ambient-green" aria-hidden="true"></div>
@@ -90,5 +84,3 @@ require_once __DIR__ . '/../includes/header.php';
 
     <p class="login-footer">© <?= date('Y') ?> Mindful Student Wellness &nbsp;·&nbsp; <a href="#">Privacy</a></p>
 </main>
-
-<?php require_once __DIR__ . '/../includes/footer.php'; ?>

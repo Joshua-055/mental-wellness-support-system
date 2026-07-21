@@ -1,9 +1,3 @@
-<?php
-$pageTitle = 'Dashboard | Mindful';
-$pageStyles = ['student-dashboard'];
-include '../includes/header.php';
-?>
-
 <main class="student-app">
     <div class="dashboard-glow glow-one" aria-hidden="true"></div>
     <div class="dashboard-glow glow-two" aria-hidden="true"></div>
@@ -11,7 +5,7 @@ include '../includes/header.php';
     <aside class="student-sidebar glass-surface" aria-label="Student navigation">
         <a class="brand dashboard-brand" href="../index.php"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span><span>mindful</span></a>
         <nav class="side-nav">
-            <a class="side-link active" href="dashboard.php"><span class="nav-icon">⌂</span>Dashboard</a>
+            <a class="side-link active" href="./"><span class="nav-icon">⌂</span>Dashboard</a>
             <a class="side-link" href="checkin.php"><span class="nav-icon">♡</span>Wellness Check-In</a>
             <a class="side-link" href="checkin-history.php"><span class="nav-icon">◷</span>History</a>
             <a class="side-link" href="resources.php"><span class="nav-icon">▤</span>Resources</a>
@@ -97,5 +91,3 @@ include '../includes/header.php';
         <section class="quick-actions" aria-labelledby="quick-title"><div class="section-heading"><div><p class="section-kicker">TAKE THE NEXT STEP</p><h2 id="quick-title">Quick actions</h2></div></div><div class="action-grid"><a href="checkin.php" class="quick-action primary-action"><span>＋</span><b>New check-in</b><small>Take a moment</small></a><a href="appointments.php" class="quick-action"><span>□</span><b>Book appointment</b><small>Talk with someone</small></a><a href="support-request.php" class="quick-action"><span>◎</span><b>Request support</b><small>We are here for you</small></a><a href="resources.php" class="quick-action"><span>▤</span><b>Browse resources</b><small>Find what helps</small></a></div></section>
     </section>
 </main>
-
-<?php include '../includes/footer.php'; ?>

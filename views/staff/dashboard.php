@@ -1,15 +1,9 @@
-<?php
-$pageTitle = 'Staff Dashboard | Mindful';
-$pageStyles = ['staff-dashboard'];
-include '../includes/header.php';
-?>
-
 <main class="staff-app">
     <div class="staff-glow staff-glow-blue" aria-hidden="true"></div><div class="staff-glow staff-glow-green" aria-hidden="true"></div>
     <aside class="staff-sidebar glass-surface" aria-label="Staff navigation">
         <a class="brand dashboard-brand" href="../index.php"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span><span>mindful</span></a>
         <p class="staff-space-label">STAFF SPACE</p>
-        <nav class="side-nav"><a class="side-link active" href="dashboard.php"><span class="nav-icon">⌂</span>Dashboard</a><a class="side-link" href="support-request.php"><span class="nav-icon">◎</span>Support Requests <b class="side-count">12</b></a><a class="side-link" href="appointments.php"><span class="nav-icon">□</span>Appointments</a><a class="side-link" href="#"><span class="nav-icon">◉</span>Students</a><a class="side-link" href="resources.php"><span class="nav-icon">▤</span>Resources</a><a class="side-link" href="#"><span class="nav-icon">⌁</span>Reports</a></nav>
+        <nav class="side-nav"><a class="side-link active" href="./"><span class="nav-icon">⌂</span>Dashboard</a><a class="side-link" href="support-request.php"><span class="nav-icon">◎</span>Support Requests <b class="side-count">12</b></a><a class="side-link" href="appointments.php"><span class="nav-icon">□</span>Appointments</a><a class="side-link" href="#"><span class="nav-icon">◉</span>Students</a><a class="side-link" href="resources.php"><span class="nav-icon">▤</span>Resources</a><a class="side-link" href="#"><span class="nav-icon">⌁</span>Reports</a></nav>
         <div class="sidebar-bottom"><a class="side-link" href="#"><span class="nav-icon">⚙</span>Settings</a><a class="side-link staff-logout" href="../auth/logout.php"><span class="nav-icon">↗</span>Log out</a></div>
     </aside>
     <section class="staff-content">
@@ -26,4 +20,3 @@ include '../includes/header.php';
         <section class="quick-actions staff-actions"><div class="section-heading"><div><p class="section-kicker">WORKSPACE</p><h2>Quick actions</h2></div></div><div class="action-grid"><a href="resources.php" class="quick-action primary-action"><span>＋</span><b>Add resource</b><small>Share useful support</small></a><a href="support-request.php" class="quick-action"><span>◎</span><b>Assign case</b><small>Route it to a colleague</small></a><a href="appointments.php" class="quick-action"><span>□</span><b>Schedule appointment</b><small>Create a new session</small></a><a href="#" class="quick-action"><span>⌁</span><b>Generate report</b><small>Review wellbeing trends</small></a></div></section>
     </section>
 </main>
-<?php include '../includes/footer.php'; ?>
