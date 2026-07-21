@@ -13,6 +13,9 @@
         rel="stylesheet"
     >
 
-    <link rel="stylesheet" href="/mental-wellness-system/assets/css/style.css">
+    <link rel="stylesheet" href="/mental-wellness-system/assets/css/base.css">
+    <?php foreach (($pageStyles ?? []) as $pageStyle): ?>
+        <link rel="stylesheet" href="/mental-wellness-system/assets/css/<?= htmlspecialchars($pageStyle) ?>.css">
+    <?php endforeach; ?>
 </head>
-<body></body>
+<body>
