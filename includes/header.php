@@ -1,3 +1,6 @@
+<?php
+require_once __DIR__ . '/../config/app.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,9 +16,9 @@
         rel="stylesheet"
     >
 
-    <link rel="stylesheet" href="/mental-wellness-system/assets/css/base.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/base.css">
     <?php foreach (($pageStyles ?? []) as $pageStyle): ?>
-        <link rel="stylesheet" href="/mental-wellness-system/assets/css/<?= htmlspecialchars($pageStyle) ?>.css">
+        <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/<?= htmlspecialchars($pageStyle) ?>.css">
     <?php endforeach; ?>
 </head>
 <body>
