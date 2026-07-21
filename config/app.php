@@ -8,3 +8,10 @@
  * is deployed at the document root.
  */
 define('BASE_URL', '/mental-wellness-support-system');
+
+/**
+ * Local development shows a one-time reset link on screen because email
+ * delivery is not configured yet. Set APP_ENV=production before deployment.
+ */
+define('APP_ENV', getenv('APP_ENV') ?: 'local');
+define('PASSWORD_RESET_TTL_MINUTES', 30);

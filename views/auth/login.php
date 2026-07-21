@@ -64,7 +64,7 @@
                 <div class="field-group">
                     <div class="label-row">
                         <label for="password">Password</label>
-                        <a href="#">Forgot password?</a>
+                        <a href="<?= BASE_URL ?>/auth/forgot-password.php">Forgot password?</a>
                     </div>
                     <div class="input-wrap">
                         <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>

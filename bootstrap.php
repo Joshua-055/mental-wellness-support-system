@@ -29,6 +29,8 @@ require_once APP_ROOT . '/core/View.php';
 require_once APP_ROOT . '/core/Database.php';
 require_once APP_ROOT . '/includes/auth.php';
 require_once APP_ROOT . '/models/User.php';
+require_once APP_ROOT . '/models/PasswordReset.php';
 require_once APP_ROOT . '/controllers/AuthController.php';
+require_once APP_ROOT . '/controllers/PasswordResetController.php';
 require_once APP_ROOT . '/controllers/StudentDashboardController.php';
 require_once APP_ROOT . '/controllers/StaffDashboardController.php';

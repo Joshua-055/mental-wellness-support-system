@@ -272,6 +272,23 @@ ALTER TABLE `support_requests`
 ALTER TABLE `wellness_checkins`
   ADD CONSTRAINT `wellness_checkins_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `wellness_checkins_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `wellness_categories` (`id`);
+
+--
+-- Password reset tokens (one-time, expiring links)
+--
+CREATE TABLE IF NOT EXISTS `password_reset_tokens` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `token_hash` char(64) NOT NULL,
+  `expires_at` datetime NOT NULL,
+  `used_at` datetime DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `token_hash` (`token_hash`),
+  KEY `idx_password_reset_user` (`user_id`),
+  KEY `idx_password_reset_expiry` (`expires_at`),
+  CONSTRAINT `fk_password_reset_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

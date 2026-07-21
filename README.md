@@ -36,7 +36,13 @@ C:\xampp\htdocs\
 4. Import the database:
 
 ```
-database/wellness_system.sql
+database/mental_wellness.sql
+```
+
+For an existing database created before password recovery was added, also run:
+
+```
+database/migrations/20260721_create_password_reset_tokens.sql
 ```
 
 5. Update the database configuration:
@@ -48,7 +54,7 @@ config/database.php
 6. Open the project in your browser:
 
 ```
-http://localhost/mental-wellness-system
+http://localhost/mental-wellness-support-system
 ```
 
 ---
@@ -56,7 +62,7 @@ http://localhost/mental-wellness-system
 ## Project Structure
 
 ```
-mental-wellness-system/
+mental-wellness-support-system/
 │
 ├── assets/
 ├── config/

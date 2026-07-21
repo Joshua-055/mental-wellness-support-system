@@ -12,3 +12,11 @@
 .register-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .register-card .privacy-note { justify-content: center; text-align: center; }
 @media (max-width: 560px) { .register-fields { grid-template-columns: 1fr; }.register-card { padding: 29px 22px; } }
+
+.password-reset-shell { justify-content: center; }
+.password-reset-shell .login-card { width: min(100%, 500px); }
+.reset-guidance { margin: -7px 0 21px; color: #6f7e92; font-size: 12px; line-height: 1.55; }
+.dev-reset-link { margin: -8px 0 21px; padding: 14px; overflow-wrap: anywhere; border: 1px solid rgba(0, 122, 255, .16); border-radius: 14px; background: rgba(0, 122, 255, .07); color: #536b82; font-size: 12px; line-height: 1.5; }
+.dev-reset-link strong { display: block; margin-bottom: 5px; color: #24669f; }
+.dev-reset-link a { color: var(--blue); font-weight: 700; }
+.reset-status-icon { display: grid; width: 48px; height: 48px; margin-bottom: 18px; place-items: center; border-radius: 16px; background: rgba(52, 199, 89, .12); color: #279445; font-size: 22px; font-weight: 800; }
