@@ -4,7 +4,7 @@
     <div class="ambient ambient-lilac" aria-hidden="true"></div>
 
     <nav class="login-nav glass-surface" aria-label="Primary navigation">
-        <a class="brand" href="../index.php" aria-label="Mindful home">
+        <a class="brand" href="<?= BASE_URL ?>/" aria-label="Mindful home">
             <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
             <span>mindful</span>
         </a>
@@ -39,12 +39,25 @@
                 <p>Your private student wellbeing space.</p>
             </div>
 
-            <form id="loginForm" class="login-form" method="post" action="#" novalidate>
+            <?php if (!empty($flashSuccess)): ?>
+                <div class="auth-alert success" role="status"><?= escape((string) $flashSuccess) ?></div>
+            <?php endif; ?>
+            <?php if (!empty($flashError)): ?>
+                <div class="auth-alert error" role="alert"><?= escape((string) $flashError) ?></div>
+            <?php endif; ?>
+            <?php if (!empty($errors)): ?>
+                <div class="auth-alert error" role="alert">
+                    <?php foreach ($errors as $error): ?><p><?= escape((string) $error) ?></p><?php endforeach; ?>
+                </div>
+            <?php endif; ?>
+
+            <form id="loginForm" class="login-form" method="post" action="<?= BASE_URL ?>/" novalidate>
+                <input type="hidden" name="csrf_token" value="<?= escape($csrfToken) ?>">
                 <div class="field-group">
                     <label for="email">University email</label>
                     <div class="input-wrap">
                         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 6.5h17v11h-17zM4 7l8 6 8-6"/></svg>
-                        <input id="email" name="email" type="email" autocomplete="email" placeholder="you@university.edu" required>
+                        <input id="email" name="email" type="email" autocomplete="email" placeholder="you@university.edu" value="<?= escape($email ?? '') ?>" required>
                     </div>
                 </div>
 
@@ -62,18 +75,14 @@
                     </div>
                 </div>
 
-                <label class="remember-option">
-                    <input type="checkbox" name="remember">
-                    <span class="custom-checkbox" aria-hidden="true"></span>
-                    Remember me for 30 days
-                </label>
-
                 <button class="sign-in-button" type="submit">
                     <span>Sign in securely</span>
                     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                 </button>
                 <p id="formMessage" class="form-message" role="status" aria-live="polite"></p>
             </form>
+
+            <p class="auth-switch">New to Mindful? <a href="<?= BASE_URL ?>/auth/register.php">Create a student account</a></p>
 
             <div class="privacy-note">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 19 6v5.2c0 4.5-2.9 7.7-7 9.3-4.1-1.6-7-4.8-7-9.3V6l7-2.5Z"/><path d="m9 12 2 2 4-4"/></svg>

@@ -1,3 +1,8 @@
+<?php
+$displayName = escape((string) ($currentUser['full_name'] ?? 'Student'));
+$firstName = escape(explode(' ', trim((string) ($currentUser['full_name'] ?? 'Student')))[0]);
+$initial = escape(strtoupper(substr(trim((string) ($currentUser['full_name'] ?? 'S')), 0, 1)));
+?>
 <main class="student-app">
     <div class="dashboard-glow glow-one" aria-hidden="true"></div>
     <div class="dashboard-glow glow-two" aria-hidden="true"></div>
@@ -19,6 +24,7 @@
                 <p>Need to talk?</p>
                 <a href="support-request.php">Get support <span>→</span></a>
             </div>
+            <a class="side-link" href="<?= BASE_URL ?>/auth/logout.php"><span class="nav-icon">↗</span>Log out</a>
         </div>
     </aside>
 
@@ -28,14 +34,14 @@
             <div class="topbar-breadcrumb"><span>Student space</span><strong>Dashboard</strong></div>
             <div class="topbar-actions">
                 <button class="notification-button" type="button" aria-label="You have 2 notifications"><span>♢</span><i></i></button>
-                <a class="profile-chip" href="#"><span class="avatar">J</span><span class="profile-name">Joshua <small>Student</small></span><span class="chevron">⌄</span></a>
+                <a class="profile-chip" href="#"><span class="avatar"><?= $initial ?></span><span class="profile-name"><?= $displayName ?> <small>Student</small></span><span class="chevron">⌄</span></a>
             </div>
         </header>
 
         <section class="dashboard-hero" aria-labelledby="greeting-title">
             <div>
                 <p class="hero-overline"><span></span> MONDAY, JULY 21</p>
-                <h1 id="greeting-title">Good morning, Joshua <span>👋</span></h1>
+                <h1 id="greeting-title">Good morning, <?= $firstName ?> <span>👋</span></h1>
                 <p>How are you feeling today? A moment for yourself can change the pace of your day.</p>
             </div>
             <div class="hero-orb" aria-hidden="true"><div class="orb-core">✦</div><i></i><b></b></div>
