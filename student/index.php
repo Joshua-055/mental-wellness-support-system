@@ -14,6 +14,10 @@ switch ($page) {
         (new AppointmentController())->index();
         break;
 
+    case 'appointment_confirm':
+        (new AppointmentController())->confirm();
+        break;
+
     default:
         echo "404 Page Not Found";
 }

@@ -1,0 +1,672 @@
+/* 1. 基础布局与背景 */
+.student-app {
+    min-height: 100vh;
+    padding: 22px;
+    position: relative;
+    background: #f4f7fb;
+    display: grid;
+    grid-template-columns: 238px minmax(0, 1fr);
+    gap: 22px;
+    overflow: hidden;
+}
+
+.dashboard-glow {
+    position: fixed;
+    z-index: 0;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(4px);
+}
+
+.glow-one {
+    width: 570px;
+    height: 570px;
+    top: -270px;
+    right: 3%;
+    background: radial-gradient(circle, rgba(90, 200, 250, .24), transparent 68%);
+}
+
+.glow-two {
+    width: 500px;
+    height: 500px;
+    bottom: -260px;
+    left: 12%;
+    background: radial-gradient(circle, rgba(52, 199, 89, .16), transparent 68%);
+}
+
+.student-sidebar,
+.dashboard-content {
+    position: relative;
+    z-index: 1;
+}
+
+.dashboard-content {
+    max-width: 1420px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 8px 52px;
+}
+
+/* 2. 侧边栏 (Sidebar) */
+.student-sidebar {
+    height: calc(100vh - 44px);
+    position: sticky;
+    top: 22px;
+    border-radius: 26px;
+    padding: 27px 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-brand {
+    padding: 0 10px;
+}
+
+.side-nav {
+    display: grid;
+    gap: 5px;
+    margin-top: 42px;
+}
+
+.side-link {
+    height: 45px;
+    border-radius: 13px;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    color: #607087;
+    font-size: 13px;
+    font-weight: 650;
+    transition: .2s ease;
+}
+
+.side-link:hover {
+    background: rgba(255, 255, 255, .7);
+    color: #1d2a3d;
+}
+
+.side-link.active {
+    color: #007aff;
+    background: rgba(0, 122, 255, .10);
+    box-shadow: inset 0 0 0 1px rgba(0, 122, 255, .05);
+}
+
+.nav-icon {
+    font-size: 18px;
+    width: 19px;
+    text-align: center;
+    font-weight: 400;
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+}
+
+.sidebar-care {
+    margin: 19px 4px 0;
+    padding: 15px;
+    border-radius: 18px;
+    background: linear-gradient(145deg, rgba(219, 244, 234, .8), rgba(240, 250, 247, .75));
+    color: #38694e;
+}
+
+.care-spark {
+    font-size: 17px;
+    color: #34a964;
+}
+
+.sidebar-care p {
+    font-size: 12px;
+    font-weight: 700;
+    margin: 6px 0;
+}
+
+.sidebar-care a {
+    font-size: 11px;
+    color: #43835d;
+    font-weight: 700;
+}
+
+.sidebar-care a span {
+    padding-left: 3px;
+}
+
+/* 3. 顶部栏与用户卡片 (Topbar & Profile) */
+.dashboard-topbar {
+    height: 66px;
+    border-radius: 21px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px 0 22px;
+}
+
+.mobile-menu {
+    display: none;
+}
+
+.topbar-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+}
+
+.topbar-breadcrumb span {
+    color: #8490a2;
+}
+
+.topbar-breadcrumb strong {
+    color: #26344a;
+    font-weight: 700;
+}
+
+.topbar-breadcrumb strong:before {
+    content: '/';
+    color: #c3cbd7;
+    margin-right: 12px;
+}
+
+.topbar-actions,
+.profile-chip {
+    display: flex;
+    align-items: center;
+}
+
+.topbar-actions {
+    gap: 14px;
+}
+
+.notification-button {
+    border: 0;
+    background: rgba(255, 255, 255, .58);
+    width: 37px;
+    height: 37px;
+    border-radius: 12px;
+    color: #3e5068;
+    font-size: 19px;
+    position: relative;
+}
+
+.notification-button i {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border: 1.5px solid white;
+    border-radius: 50%;
+    right: 9px;
+    top: 8px;
+    background: #ff453a;
+}
+
+.profile-chip {
+    gap: 8px;
+}
+
+.avatar {
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    border-radius: 13px;
+    background: linear-gradient(145deg, #277fd1, #8bd1f8);
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    box-shadow: 0 4px 11px rgba(0, 122, 255, .2);
+}
+
+.profile-name {
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #29394e;
+}
+
+.profile-name small {
+    display: block;
+    color: #8490a2;
+    font-weight: 500;
+    font-size: 10px;
+}
+
+.chevron {
+    color: #77869a;
+    font-size: 15px;
+}
+
+/* 4. 响应式适配 (与已用到元素相关的媒体查询) */
+@media(max-width:1100px) {
+    .student-app {
+        grid-template-columns: 72px minmax(0, 1fr);
+    }
+
+    .student-sidebar {
+        padding: 25px 10px;
+    }
+
+    .dashboard-brand>span:last-child,
+    .side-link:not(.active)::after,
+    .side-link {
+        font-size: 0;
+    }
+
+    .dashboard-brand {
+        justify-content: center;
+        padding: 0;
+    }
+
+    .side-link {
+        justify-content: center;
+        padding: 0;
+    }
+
+    .nav-icon {
+        font-size: 19px;
+    }
+
+    .sidebar-care {
+        display: none;
+    }
+
+    .side-nav {
+        margin-top: 42px;
+    }
+
+    .profile-name,
+    .chevron {
+        display: none;
+    }
+}
+
+@media(max-width:760px) {
+    .student-app {
+        display: block;
+        padding: 12px;
+    }
+
+    .student-sidebar {
+        display: none;
+    }
+
+    .dashboard-content {
+        padding: 0 0 30px;
+    }
+
+    .dashboard-topbar {
+        height: 59px;
+        padding: 0 12px;
+    }
+
+    .mobile-menu {
+        display: block;
+        border: 0;
+        background: transparent;
+        font-size: 21px;
+        color: #3d4e64;
+    }
+
+    .topbar-breadcrumb {
+        display: none;
+    }
+
+    .notification-button {
+        width: 35px;
+        height: 35px;
+    }
+
+    .profile-chip {
+        gap: 0;
+    }
+}
+
+@media(max-width:430px) {
+    .student-app {
+        padding: 8px;
+    }
+}
+
+/* ==========================================
+   精确居中在右侧工作区 (Appointments Zone)
+   ========================================== */
+
+/* 让右侧包裹区充满顶部栏下方的剩余高度 */
+.dashboard-content {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 44px);
+    box-sizing: border-box;
+}
+
+/* 居中核心：在顶部栏下方自动拉伸并绝对/Flex居中 */
+.appointment-center-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    /* 上下垂直居中 */
+    justify-content: center;
+    /* 左右水平居中 */
+    padding: 30px 0;
+}
+
+/* 居中核心卡片框 */
+.appointment-picker-container {
+    width: 100%;
+    max-width: 760px;
+    /* 完美卡在中间的宽度 */
+    padding: 32px;
+    border-radius: 26px;
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    display: grid;
+    grid-template-columns: 1.25fr 0.75fr;
+    gap: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 20px 40px rgba(31, 50, 81, 0.06);
+}
+
+.picker-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1a2535;
+    margin: 0 0 20px 0;
+}
+
+/* --- 日历组件 --- */
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.current-month-year {
+    font-weight: 700;
+    color: #29394e;
+    font-size: 15px;
+}
+
+.cal-nav {
+    border: none;
+    background: rgba(0, 122, 255, 0.08);
+    color: #007aff;
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s ease;
+}
+
+.cal-nav:hover {
+    background: #007aff;
+    color: #fff;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    text-align: center;
+}
+
+.cal-day-head {
+    font-size: 12px;
+    font-weight: 700;
+    color: #8490a2;
+    padding-bottom: 8px;
+}
+
+.cal-date {
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: #29394e;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.cal-date:hover:not(.muted) {
+    background: rgba(0, 122, 255, 0.1);
+    color: #007aff;
+}
+
+.cal-date.active {
+    background: #007aff;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
+}
+
+.cal-date.muted {
+    color: #c3cbd7;
+    cursor: default;
+}
+
+/* --- 滚轮时间选择器（上下透明，中间选中） --- */
+.time-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-left: 1px solid rgba(210, 220, 235, 0.5);
+    padding-left: 32px;
+}
+
+.time-section .picker-title {
+    align-self: flex-start;
+}
+
+.time-wheel-wrapper {
+    position: relative;
+    height: 200px;
+    width: 100%;
+    max-width: 200px;
+    overflow: hidden;
+    /* 渐变遮罩：上下半透明，中间不透明 */
+    -webkit-mask-image: linear-gradient(to bottom,
+            transparent 0%,
+            rgba(0, 0, 0, 1) 35%,
+            rgba(0, 0, 0, 1) 65%,
+            transparent 100%);
+    mask-image: linear-gradient(to bottom,
+            transparent 0%,
+            rgba(0, 0, 0, 1) 35%,
+            rgba(0, 0, 0, 1) 65%,
+            transparent 100%);
+}
+
+.time-selection-overlay {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 40px;
+    transform: translateY(-50%);
+    border-top: 2px solid #007aff;
+    border-bottom: 2px solid #007aff;
+    pointer-events: none;
+}
+
+.time-wheel {
+    height: 100%;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+    padding: 80px 0;
+    scrollbar-width: none;
+}
+
+.time-wheel::-webkit-scrollbar {
+    display: none;
+}
+
+.time-item {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: #77869a;
+    scroll-snap-align: center;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.time-item.active {
+    color: #007aff;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.confirm-btn {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 200px;
+    height: 42px;
+    background: #007aff;
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 122, 255, 0.25);
+    transition: 0.2s ease;
+}
+
+.confirm-btn:hover {
+    background: #0056b3;
+}
+
+/* 响应式支持 */
+@media (max-width: 850px) {
+    .appointment-picker-container {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        max-width: 420px;
+    }
+
+    .time-section {
+        border-left: none;
+        border-top: 1px solid rgba(210, 220, 235, 0.5);
+        padding-left: 0;
+        padding-top: 20px;
+    }
+}
+
+.appointment-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+}
+
+.appointment-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, .35);
+    backdrop-filter: blur(5px);
+}
+
+
+.modal-content {
+    position: relative;
+    width: 380px;
+    height: 280px;
+    z-index: 2;
+}
+
+
+.modal-content iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 20px;
+    background: transparent;
+}
+
+/*小窗口
+ * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 15px;
+        }
+
+        /* 独立小窗口卡片样式 */
+.modal-card {
+    width: 100%;
+    max-width: 360px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    padding: 22px;
+}
+
+.modal-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1a2535;
+    margin-bottom: 6px;
+}
+
+.modal-desc {
+    font-size: 12px;
+    color: #77869a;
+    margin-bottom: 16px;
+}
+
+/* 带有数据的展示框 */
+.summary-box {
+    background: rgba(0, 122, 255, 0.05);
+    border: 1px solid rgba(0, 122, 255, 0.12);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+}
+
+.summary-item:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.label {
+    color: #607087;
+    font-weight: 600;
+}
+
+.value {
+    color: #007aff;
+    font-weight: 700;
+}
+

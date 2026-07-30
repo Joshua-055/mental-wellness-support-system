@@ -9,7 +9,17 @@ final class AppointmentController extends Controller
 
         $this->render('student/appointments', [
             'pageTitle' => 'Appointments | Mindful',
-            'pageStyles' => ['student-dashboard'],
+            'pageStyles' => ['appointment'],
+            'currentUser' => $currentUser,
+        ]);
+    }
+    public function confirm(): void
+    {
+        $currentUser = requireRole('student');
+
+        $this->render('student/appointment_confirm', [
+            'pageTitle' => 'Confirm Appointment | Mindful',
+            'pageStyles' => ['appointment_confirm'],
             'currentUser' => $currentUser,
         ]);
     }
