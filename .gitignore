@@ -13,3 +13,5 @@ Desktop.ini
 
 # Logs
 *.log
+
+.database.php 
