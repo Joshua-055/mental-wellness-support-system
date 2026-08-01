@@ -15,7 +15,7 @@ $initial = escape(strtoupper(substr(trim((string) ($currentUser['full_name'] ?? 
             <a class="side-link" href="checkin-history.php"><span class="nav-icon">◷</span>History</a>
             <a class="side-link" href="resources.php"><span class="nav-icon">▤</span>Resources</a>
             <a class="side-link" href="index.php?page=appointments"><span class="nav-icon">□</span>Appointments</a>
-            <a class="side-link" href="support-request.php"><span class="nav-icon">◎</span>Support Requests</a>
+            <a class="side-link" href="index.php?page=support_request"><span class="nav-icon">◎</span>Support Requests</a>
         </nav>
         <div class="sidebar-bottom">
             <a class="side-link" href="#"><span class="nav-icon">⚙</span>Settings</a>
@@ -89,11 +89,11 @@ $initial = escape(strtoupper(substr(trim((string) ($currentUser['full_name'] ?? 
             </article>
 
             <article class="support-card glass-surface">
-                <div class="section-heading"><div><p class="section-kicker">YOUR REQUEST</p><h2>Support status</h2></div><a href="support-request.php">View <span>→</span></a></div>
+                <div class="section-heading"><div><p class="section-kicker">YOUR REQUEST</p><h2>Support status</h2></div><a href="index.php?page=support_request">View <span>→</span></a></div>
                 <div class="support-timeline"><div class="timeline-step done"><i>✓</i><div><strong>Submitted</strong><small>18 July · 10:42 AM</small></div></div><div class="timeline-step done"><i>✓</i><div><strong>Under review</strong><small>Your request is being looked at</small></div></div><div class="timeline-step current"><i></i><div><strong>Assigned</strong><small>We will update you soon</small></div></div><div class="timeline-step"><i></i><div><strong>Completed</strong></div></div></div>
             </article>
         </section>
 
-        <section class="quick-actions" aria-labelledby="quick-title"><div class="section-heading"><div><p class="section-kicker">TAKE THE NEXT STEP</p><h2 id="quick-title">Quick actions</h2></div></div><div class="action-grid"><a href="checkin.php" class="quick-action primary-action"><span>＋</span><b>New check-in</b><small>Take a moment</small></a><a href="index.php?page=appointments" class="quick-action"><span>□</span><b>Book appointment</b><small>Talk with someone</small></a><a href="support-request.php" class="quick-action"><span>◎</span><b>Request support</b><small>We are here for you</small></a><a href="resources.php" class="quick-action"><span>▤</span><b>Browse resources</b><small>Find what helps</small></a></div></section>
+        <section class="quick-actions" aria-labelledby="quick-title"><div class="section-heading"><div><p class="section-kicker">TAKE THE NEXT STEP</p><h2 id="quick-title">Quick actions</h2></div></div><div class="action-grid"><a href="checkin.php" class="quick-action primary-action"><span>＋</span><b>New check-in</b><small>Take a moment</small></a><a href="index.php?page=appointments" class="quick-action"><span>□</span><b>Book appointment</b><small>Talk with someone</small></a><a href="index.php?page=support_request" class="quick-action"><span>◎</span><b>Request support</b><small>We are here for you</small></a><a href="resources.php" class="quick-action"><span>▤</span><b>Browse resources</b><small>Find what helps</small></a></div></section>
     </section>
 </main>

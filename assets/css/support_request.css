@@ -1,3 +1,7 @@
+/* ==========================================
+   已用到的 CSS 样式 (Extracted Used CSS)
+   ========================================== */
+
 /* 1. 基础布局与背景 */
 .student-app {
     min-height: 100vh;
@@ -327,275 +331,253 @@
     }
 }
 
-/* ==========================================
-   精确居中在右侧工作区 (Appointments Zone)
-   ========================================== */
+/* Support Request Page */
 
-/* 让右侧包裹区充满顶部栏下方的剩余高度 */
-.dashboard-content {
-    display: flex;
-    flex-direction: column;
-    min-height: calc(100vh - 44px);
-    box-sizing: border-box;
+.support-request-page {
+    padding: 40px;
 }
 
-/* 居中核心：在顶部栏下方自动拉伸并绝对/Flex居中 */
-.appointment-center-wrapper {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    /* 上下垂直居中 */
-    justify-content: center;
-    /* 左右水平居中 */
-    padding: 30px 0;
-}
 
-/* 居中核心卡片框 */
-.appointment-picker-container {
-    width: 100%;
-    max-width: 760px;
-    /* 完美卡在中间的宽度 */
-    padding: 32px;
-    border-radius: 26px;
-    background: rgba(255, 255, 255, 0.65);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    display: grid;
-    grid-template-columns: 1.25fr 0.75fr;
-    gap: 32px;
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    box-shadow: 0 20px 40px rgba(31, 50, 81, 0.06);
-}
+.support-header {
 
-.picker-title {
-    font-size: 16px;
-    font-weight: 700;
-    color: #1a2535;
-    margin: 0 0 20px 0;
-}
-
-/* --- 日历组件 --- */
-.calendar-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 16px;
+
+    margin-bottom: 35px;
+
 }
 
-.current-month-year {
-    font-weight: 700;
-    color: #29394e;
-    font-size: 15px;
+
+.support-header h1 {
+
+    color: #1f3150;
+    margin-bottom: 8px;
+
 }
 
-.cal-nav {
-    border: none;
-    background: rgba(0, 122, 255, 0.08);
-    color: #007aff;
-    width: 32px;
-    height: 32px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.2s ease;
+
+.support-header p {
+
+    color: #8190aa;
+
 }
 
-.cal-nav:hover {
-    background: #007aff;
-    color: #fff;
-}
 
-.calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 8px;
-    text-align: center;
-}
 
-.cal-day-head {
-    font-size: 12px;
-    font-weight: 700;
-    color: #8490a2;
-    padding-bottom: 8px;
-}
+.create-request-btn {
 
-.cal-date {
-    height: 38px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 13px;
+    background: #1683ff;
+    color: white;
+
+    padding: 14px 25px;
+
+    border-radius: 15px;
+
+    text-decoration: none;
+
     font-weight: 600;
-    color: #29394e;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: 0.2s ease;
+
 }
 
-.cal-date:hover:not(.muted) {
-    background: rgba(0, 122, 255, 0.1);
-    color: #007aff;
+
+
+.request-section h2 {
+
+    color: #1f3150;
+
+    margin-bottom: 20px;
+
 }
 
-.cal-date.active {
-    background: #007aff;
-    color: #ffffff;
-    box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
-}
 
-.cal-date.muted {
-    color: #c3cbd7;
-    cursor: default;
-}
 
-/* --- 滚轮时间选择器（上下透明，中间选中） --- */
-.time-section {
+.request-card {
+
+    background: white;
+
+    border-radius: 25px;
+
+    padding: 25px 30px;
+
     display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 20px;
+
+    box-shadow: 0 10px 30px rgba(60, 100, 150, .05);
+
+}
+
+
+
+.request-info h3 {
+
+    margin-top: 0;
+
+    color: #243754;
+
+}
+
+
+
+.request-info p {
+
+    color: #71809b;
+
+    margin: 8px 0;
+
+}
+
+
+
+.request-status {
+
+    display: flex;
+
     flex-direction: column;
-    align-items: center;
-    border-left: 1px solid rgba(210, 220, 235, 0.5);
-    padding-left: 32px;
+
+    align-items: flex-end;
+
+    gap: 15px;
+
 }
 
-.time-section .picker-title {
-    align-self: flex-start;
-}
 
-.time-wheel-wrapper {
-    position: relative;
-    height: 200px;
-    width: 100%;
-    max-width: 200px;
-    overflow: hidden;
-    /* 渐变遮罩：上下半透明，中间不透明 */
-    -webkit-mask-image: linear-gradient(to bottom,
-            transparent 0%,
-            rgba(0, 0, 0, 1) 35%,
-            rgba(0, 0, 0, 1) 65%,
-            transparent 100%);
-    mask-image: linear-gradient(to bottom,
-            transparent 0%,
-            rgba(0, 0, 0, 1) 35%,
-            rgba(0, 0, 0, 1) 65%,
-            transparent 100%);
-}
 
-.time-selection-overlay {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 40px;
-    transform: translateY(-50%);
-    border-top: 2px solid #007aff;
-    border-bottom: 2px solid #007aff;
-    pointer-events: none;
-}
+.status {
 
-.time-wheel {
-    height: 100%;
-    overflow-y: auto;
-    scroll-snap-type: y mandatory;
-    padding: 80px 0;
-    scrollbar-width: none;
-}
-
-.time-wheel::-webkit-scrollbar {
-    display: none;
-}
-
-.time-item {
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
     font-weight: 600;
-    color: #77869a;
-    scroll-snap-align: center;
-    cursor: pointer;
-    transition: 0.2s ease;
+
 }
 
-.time-item.active {
-    color: #007aff;
-    font-size: 16px;
-    font-weight: 700;
+
+
+.pending {
+
+    color: #e5a500;
+
 }
 
-.confirm-btn {
-    margin-top: 20px;
-    width: 100%;
-    max-width: 200px;
-    height: 42px;
-    background: #007aff;
-    color: #ffffff;
-    border: none;
-    border-radius: 12px;
-    font-weight: 700;
-    font-size: 13px;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 122, 255, 0.25);
-    transition: 0.2s ease;
+
+
+.progress {
+
+    color: #1683ff;
+
 }
 
-.confirm-btn:hover {
-    background: #0056b3;
+
+
+.request-status a {
+
+    color: #1683ff;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
 }
 
-/* 响应式支持 */
-@media (max-width: 850px) {
-    .appointment-picker-container {
-        grid-template-columns: 1fr;
-        gap: 24px;
-        max-width: 420px;
-    }
+/* Support Request Modal */
 
-    .time-section {
-        border-left: none;
-        border-top: 1px solid rgba(210, 220, 235, 0.5);
-        padding-left: 0;
-        padding-top: 20px;
-    }
-}
-
-.appointment-modal {
+.modal-overlay {
     display: none;
     position: fixed;
     inset: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45);
+    align-items: center;
+    justify-content: center;
     z-index: 9999;
 }
 
-.appointment-modal.active {
+/* JS 加 active 后显示 */
+.modal-overlay.active {
     display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
-
-.modal-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, .35);
-    backdrop-filter: blur(5px);
-}
-
-
-.modal-content {
-    position: relative;
-    width: 380px;
-    height: 280px;
-    z-index: 2;
-}
-
-
-.modal-content iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
+.modal-card-wrapper {
+    width: 90%;
+    max-width: 420px;
+    height: 560px;
+    max-height: 95vh;
     border-radius: 20px;
+    overflow: hidden;
     background: transparent;
 }
 
+#supportModalIframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    overflow: hidden;
+}
 
+/* CSS 滚动条样式：直接加在文件上方或者你的 support_request.css 里 */
+.request-list-wrapper {
+    /* 假设每个卡片高度约110px，3个差不多350px。如果显示不准可以微调这个数值 */
+    max-height: 110px; 
+    overflow-y: auto;
+    padding-right: 12px; /* 给滚动条留出空间，避免挡住内容 */
+}
 
+/* 自定义滚动条 (仿造你发来的截图效果) */
+.request-list-wrapper::-webkit-scrollbar {
+    width: 6px;
+}
+
+.request-list-wrapper::-webkit-scrollbar-track {
+    background: #e0e0e0;
+    border-radius: 10px;
+}
+.request-list-wrapper::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+.request-list-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* 🎨 1. 外层大盒子的样式 */
+.request-box-container {
+    background: #ffffff; /* 纯白背景 */
+    border-radius: 16px; /* 圆角 */
+    padding: 20px 10px 20px 20px; /* 内边距（右边留小一点给滚动条）*/
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03); /* 整个盒子外围淡淡的高级阴影 */
+    border: 1px solid #f0f0f0; /* 极浅的边框 */
+}
+
+/* ↕️ 2. 内部滚动区域 */
+.request-list-wrapper {
+    /* 这里的高度决定了什么时候出现滚动条。
+       假设你一个卡片高度是 110px，3个就是 330px 左右。请根据实际情况微调这个数值！ */
+    max-height: 350px; 
+    overflow-y: auto;
+    padding-right: 15px; /* 防止内容贴住滚动条 */
+}
+
+/* 去掉最后一个卡片底部的多余留白 */
+.request-list-wrapper .request-card:last-child {
+    margin-bottom: 0;
+}
+
+/* ✨ 3. 滚动条美化（你发的那种细条） */
+.request-list-wrapper::-webkit-scrollbar {
+    width: 6px; /* 滚动条宽度 */
+}
+.request-list-wrapper::-webkit-scrollbar-track {
+    background: #f8f9fa; /* 滚动条轨道的颜色 */
+    border-radius: 10px;
+}
+.request-list-wrapper::-webkit-scrollbar-thumb {
+    background: #d1d5db; /* 滚动条本身的灰色 */
+    border-radius: 10px;
+}
+.request-list-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af; /* 鼠标移上去颜色变深 */
+}

@@ -18,6 +18,18 @@ switch ($page) {
         (new AppointmentController())->confirm();
         break;
 
+    case 'support_request':
+        (new support_requestController())->index();
+        break;
+
+    case 'create_support_request':
+        (new support_requestController())->create();
+        break;
+
+    case 'support_request_detail':
+        (new support_requestController())->detail();
+        break;
+        
     default:
         echo "404 Page Not Found";
 }

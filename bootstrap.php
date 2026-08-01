@@ -35,3 +35,5 @@ require_once APP_ROOT . '/controllers/PasswordResetController.php';
 require_once APP_ROOT . '/controllers/StudentDashboardController.php';
 require_once APP_ROOT . '/controllers/StaffDashboardController.php';
 require_once APP_ROOT . '/controllers/AppointmentController.php';
+require_once APP_ROOT . '/controllers/support_requestController.php';
+require_once APP_ROOT . '/models/SupportRequest.php';

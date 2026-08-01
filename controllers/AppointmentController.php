@@ -9,6 +9,7 @@ final class AppointmentController extends Controller
 
         $this->render('student/appointments', [
             'pageTitle' => 'Appointments | Mindful',
+            'pageScripts' => ['appointment'],
             'pageStyles' => ['appointment'],
             'currentUser' => $currentUser,
         ]);
