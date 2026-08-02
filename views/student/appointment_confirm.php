@@ -14,7 +14,8 @@ $time = isset($_GET['time']) ? htmlspecialchars($_GET['time']) : '未选择时�
 
 <body>
 
-    <div class="modal-card">
+    <div class="modal-card" id="appointmentData" data-date="<?= htmlspecialchars($date) ?>"
+        data-time="<?= htmlspecialchars($time) ?>">
         <h3 class="modal-title">核对预约时间</h3>
         <p class="modal-desc">请确认以下选择是否正确：</p>
 
@@ -30,9 +31,10 @@ $time = isset($_GET['time']) ? htmlspecialchars($_GET['time']) : '未选择时�
         </div>
 
         <div class="form-group">
-            <label for="supportRequestId">选择你要预约的 Request Subject (可选)</label>
+            <!-- 👇 去掉(可选)，加上红色星号 -->
+            <label for="supportRequestId">选择你要预约的 Request Subject <span style="color: #ff3b30;">*</span></label>
             <select id="supportRequestId" onchange="toggleReasonBox()">
-                <option value="">-- 不关联任何请求 --</option>
+                <option value="">-- 请选择关联请求 --</option>
 
                 <?php if (isset($rawRequests) && is_array($rawRequests)): ?>
                     <?php foreach ($rawRequests as $req): ?>
@@ -52,11 +54,17 @@ $time = isset($_GET['time']) ? htmlspecialchars($_GET['time']) : '未选择时�
                 <?php endif; ?>
 
             </select>
+            <!-- 👇 新增的隐藏报错提示字 (Subject 专属) -->
+            <div id="subjectError" style="color: #ff3b30; font-size: 13px; margin-top: 8px; display: none;">请选择要预约的
+                Request Subject！</div>
         </div>
 
         <div class="form-group" id="reasonGroup">
             <label for="reason">预约原因 <span style="color: #ff3b30;">*</span></label>
             <textarea id="reason" placeholder="请简述您的预约原因..."></textarea>
+            <!-- 👇 新增的隐藏报错提示字 -->
+            <div id="reasonError" style="color: #ff3b30; font-size: 13px; margin-top: 8px; display: none;">请填写预约原因！
+            </div>
         </div>
 
         <div class="btn-group">

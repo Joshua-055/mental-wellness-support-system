@@ -164,14 +164,40 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
 
-    window.handleFinalSubmit = function (date, time) {
+    window.handleFinalSubmit = function (date, time, supportRequestId, reason) {
+        // 1. 准备要发送给后端的数据
+        const formData = new FormData();
+        formData.append('appointment_date', date);
+        formData.append('appointment_time', time);
+        formData.append('support_request_id', supportRequestId);
+        formData.append('reason', reason);
 
-        alert(
-            "预约成功！\n\n" +
-            "日期：" + date +
-            "\n时间：" + time
-        );
+        // 2. 发送 POST 请求到后端
+        fetch('index.php?page=appointment_save', {
+            method: 'POST',
+            body: formData
+        })
+            .then(async response => {
+                const text = await response.text();
+                console.log("SERVER RESPONSE:", text);
 
-        closeModal();
+                const data = JSON.parse(text);
+
+                return data;
+            })
+            .then(data => {
+                if (data.success) {
+                    closeModal();
+                    window.location.reload();
+                } else {
+                    const iframeDoc = document.getElementById('modalIframe').contentWindow.document;
+                    const confirmBtn = iframeDoc.querySelector('.btn-confirm');
+
+                    if (confirmBtn) {
+                        confirmBtn.innerText = "确认预约";
+                        confirmBtn.disabled = false;
+                    }
+                }
+            })
     };
 });

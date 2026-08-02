@@ -597,3 +597,137 @@
     border: none;
     border-radius: 20px;
 }
+
+/* ==========================================
+   现代风表格预约记录 (Modern Table Layout)
+   ========================================== */
+
+.appointments-history-section {
+    margin-top: 32px;
+    padding: 0 10px;
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a2535;
+    margin-bottom: 20px;
+    padding-left: 4px;
+}
+
+/* 响应式表格包裹容器（防溢出） */
+.table-responsive-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+}
+
+.modern-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    min-width: 800px; /* 保证表格在小屏幕上能够横向滚动而不被挤压变形 */
+}
+
+/* 表头样式 */
+.modern-table th {
+    padding: 18px 24px;
+    font-size: 13px;
+    color: #8490a2;
+    font-weight: 600;
+    border-bottom: 2px solid #f1f5f9;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: #f8fafc;
+}
+
+.modern-table th:first-child { border-top-left-radius: 16px; }
+.modern-table th:last-child { border-top-right-radius: 16px; }
+
+/* 单元格基础样式 */
+.modern-table td {
+    padding: 20px 24px;
+    font-size: 14px;
+    color: #3e5068;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: top; /* 文字靠上对齐 */
+    line-height: 1.6;
+}
+
+/* 隐藏最后一行下边框 */
+.modern-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* 鼠标悬停高亮当前行 */
+.modern-table tbody tr {
+    transition: background-color 0.2s ease;
+}
+.modern-table tbody tr:hover {
+    background: rgba(0, 122, 255, 0.02);
+}
+
+/* --- 各列细节微调 --- */
+.td-subject strong {
+    color: #1a2535;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.date-text {
+    color: #1a2535;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.time-text {
+    color: #77869a;
+    font-size: 13px;
+}
+
+/* 限制过长的文本占用太多空间 */
+.td-reason, .td-remark {
+    max-width: 250px;
+}
+
+.remark-text {
+    color: #007aff; /* 辅导员回复蓝色高亮 */
+    font-weight: 500;
+}
+
+.text-muted {
+    color: #cbd5e1;
+}
+
+/* --- 状态圆点 (还原截图风格) --- */
+.minimal-status {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a2535;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-transform: lowercase;
+}
+
+.minimal-status::before {
+    content: "•";
+    font-size: 24px;
+    line-height: 1;
+}
+
+.status-dot-pending::before { color: #f59e0b; } 
+.status-dot-confirmed::before, .status-dot-approved::before { color: #10b981; }
+.status-dot-rejected::before, .status-dot-cancelled::before { color: #ef4444; } 
+.status-dot-completed::before { color: #3b82f6; } 
+
+/* 空白状态 */
+.empty-state {
+    text-align: center;
+    padding: 60px !important;
+    color: #8490a2;
+    font-weight: 600;
+}

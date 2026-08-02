@@ -17,7 +17,8 @@ $initial = escape(strtoupper(substr(trim((string) ($currentUser['full_name'] ?? 
             <a class="side-link" href="resources.php"><span class="nav-icon">▤</span>Resources</a>
             <a class="side-link active" href="index.php?page=appointments"><span
                     class="nav-icon">□</span>Appointments</a>
-            <a class="side-link" href="index.php?page=support_request"><span class="nav-icon">◎</span>Support Requests</a>
+            <a class="side-link" href="index.php?page=support_request"><span class="nav-icon">◎</span>Support
+                Requests</a>
         </nav>
         <div class="sidebar-bottom">
             <a class="side-link" href="#"><span class="nav-icon">⚙</span>Settings</a>
@@ -75,18 +76,83 @@ $initial = escape(strtoupper(substr(trim((string) ($currentUser['full_name'] ?? 
                 </div>
             </div>
         </div>
+
+        <!-- 预约记录展示区 (表格布局) -->
+            <div class="appointments-history-section">
+                <h3 class="section-title">我的预约记录</h3>
+
+                <div class="table-responsive-wrapper glass-surface">
+                    <table class="modern-table">
+                        <thead>
+                            <tr>
+                                <th>Subject</th>
+                                <th>Date & Time</th>
+                                <th>Reason</th>
+                                <th>Staff Remark</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php if (!empty($appointments)): ?>
+                                <?php foreach ($appointments as $appointment): ?>
+                                    <?php
+                                    // 1. 提取 Subject
+                                    $subject = 'General Appointment';
+                                    $desc = $appointment['support_description'] ?? '';
+                                    if (strpos($desc, '【Subject】:') !== false) {
+                                        $parts = explode('【Details】:', $desc);
+                                        $subject = trim(str_replace('【Subject】:', '', $parts[0]));
+                                    }
+
+                                    // 2. 状态处理
+                                    $status = strtolower(trim($appointment['STATUS'] ?? 'pending'));
+                                    ?>
+                                    <tr>
+                                        <td class="td-subject">
+                                            <strong><?= htmlspecialchars($subject) ?></strong>
+                                        </td>
+                                        <td class="td-datetime">
+                                            <div class="date-text">📅 <?= htmlspecialchars($appointment['appointment_date']) ?>
+                                            </div>
+                                            <div class="time-text">⏰ <?= htmlspecialchars($appointment['appointment_time']) ?>
+                                            </div>
+                                        </td>
+                                        <td class="td-reason">
+                                            <?= nl2br(htmlspecialchars($appointment['reason'])) ?>
+                                        </td>
+                                        <td class="td-remark">
+                                            <?php if (!empty($appointment['staff_remark'])): ?>
+                                                <span
+                                                    class="remark-text"><?= nl2br(htmlspecialchars($appointment['staff_remark'])) ?></span>
+                                            <?php else: ?>
+                                                <span class="text-muted">-</span>
+                                            <?php endif; ?>
+                                        </td>
+                                        <td class="td-status">
+                                            <span class="minimal-status status-dot-<?= $status ?>">
+                                                <?= htmlspecialchars($status) ?>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <tr>
+                                    <td colspan="5" class="empty-state">📭 暂无任何预约记录</td>
+                                </tr>
+                            <?php endif; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
     </section>
 </main>
 
- <!-- Appointment Confirm Modal -->
-    <div class="appointment-modal" id="appointmentModal">
-        <div class="modal-overlay" onclick="closeModal()"></div>
+<!-- Appointment Confirm Modal -->
+<div class="appointment-modal" id="appointmentModal">
+    <div class="modal-overlay" onclick="closeModal()"></div>
 
-        <div class="modal-content">
-            <iframe
-                id="modalIframe"
-                src=""
-                frameborder="0">
-            </iframe>
-        </div>
+    <div class="modal-content">
+        <iframe id="modalIframe" src="" frameborder="0">
+        </iframe>
     </div>
+</div>
