@@ -7,19 +7,23 @@ final class staffAppointmentController extends Controller
     {
         $currentUser = requireRole('staff', 'admin');
 
-        // 1. 实例化你的 Appointment 模型 (这里的 Appointment 请替换为你实际的 Model 类名)
         $appointmentModel = new Appointment();
-
-        // 2. 调用你之前写好的那个方法获取数据
         $appointments = $appointmentModel->getAllAppointments();
 
-        // 3. 把数据一起传递给前端视图
+        // 🌟 统计未分配的 Appointment 数量
+        $unassignedAppointmentsCount = $appointmentModel->countUnassignedAppointments();
+
+        $supportRequestModel = new SupportRequest();
+        $unassignedRequestsCount = $supportRequestModel->countUnassignedRequests();
+
         $this->render('staff/appointment', [
             'pageTitle' => 'Staff Appointments | Mindful',
             'pageStyles' => ['staff-appointment'],
             'pageScripts' => ['staff-appointment'],
             'currentUser' => $currentUser,
-            'appointments' => $appointments // 关键！把刚刚查到的数据传过去
+            'appointments' => $appointments,
+            'unassignedAppointmentsCount' => $unassignedAppointmentsCount, // 传给视图
+            'unassignedRequestsCount' => $unassignedRequestsCount, // 👈 补上这个！
         ]);
     }
 

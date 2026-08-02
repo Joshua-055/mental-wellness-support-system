@@ -11,12 +11,21 @@ final class StaffSupportRequestController extends Controller
         $supportRequestModel = new SupportRequest(); // 确保你的 Model 类名正确
         $supportRequests = $supportRequestModel->getAllRequests();
 
+        $appointmentModel = new Appointment();
+        $unassignedAppointmentsCount = $appointmentModel->countUnassignedAppointments();
+
+        $supportRequestModel = new SupportRequest();
+        $unassignedRequestsCount = $supportRequestModel->countUnassignedRequests();
+        
+        // 在 render 时带上 'unassignedRequestsCount' => $unassignedRequestsCount
         // Future: fetch staff cases, appointments and aggregates through models here.
         $this->render('staff/supportRequest', [
             'pageTitle' => 'Staff Support Requests | Mindful',
             'pageStyles' => ['staff-supportRequest'],
             'currentUser' => $currentUser,
-            'supportRequests' => $supportRequests // 传给表格循环
+            'supportRequests' => $supportRequests, // 传给表格循环
+            'unassignedRequestsCount' => $unassignedRequestsCount, // 传给视图
+            'unassignedAppointmentsCount' => $unassignedAppointmentsCount, // 传给视图
         ]);
     }
 

@@ -10,13 +10,27 @@ $initial = escape(strtoupper(substr(trim((string) ($currentUser['full_name'] ?? 
         <a class="brand dashboard-brand" href="../index.php"><span class="brand-mark"
                 aria-hidden="true"><span></span><span></span><span></span></span><span>mindful</span></a>
         <p class="staff-space-label">STAFF SPACE</p>
-        <nav class="side-nav"><a class="side-link active" href="./"><span class="nav-icon">⌂</span>Dashboard</a><a
-                class="side-link" href="index.php?page=supportRequest"><span class="nav-icon">◎</span>Support Requests <b
-                    class="side-count">12</b></a><a class="side-link" href="index.php?page=appointment"><span
-                    class="nav-icon">□</span>Appointments</a><a class="side-link" href="#"><span
-                    class="nav-icon">◉</span>Students</a><a class="side-link" href="resources.php"><span
-                    class="nav-icon">▤</span>Resources</a><a class="side-link" href="#"><span
-                    class="nav-icon">⌁</span>Reports</a></nav>
+       <nav class="side-nav">
+            <a class="side-link active" href="./"><span class="nav-icon">⌂</span>Dashboard</a>
+            
+                <!-- Support Requests 导航：一直显示数字，如果没有就显示 0 -->
+            <a class="side-link <?= ($page === 'supportRequest') ? 'active' : '' ?>" href="index.php?page=supportRequest">
+                <span class="nav-icon">◎</span>Support Requests
+                <b class="side-count"><?= $unassignedRequestsCount ?? 0 ?></b>
+            </a>
+            
+            <!-- Appointments 导航 -->
+            <a class="side-link <?= ($page === 'appointment') ? 'active' : '' ?>" href="index.php?page=appointment">
+                <span class="nav-icon">□</span>Appointments
+                <?php if (!empty($unassignedAppointmentsCount) && $unassignedAppointmentsCount > 0): ?>
+                    <b class="side-count"><?= $unassignedAppointmentsCount ?></b>
+                <?php endif; ?>
+            </a>
+
+            <a class="side-link" href="#"><span class="nav-icon">◉</span>Students</a>
+            <a class="side-link" href="resources.php"><span class="nav-icon">▤</span>Resources</a>
+            <a class="side-link" href="#"><span class="nav-icon">⌁</span>Reports</a>
+        </nav>
         <div class="sidebar-bottom"><a class="side-link" href="#"><span class="nav-icon">⚙</span>Settings</a><a
                 class="side-link staff-logout" href="<?= BASE_URL ?>/auth/logout.php"><span class="nav-icon">↗</span>Log
                 out</a></div>

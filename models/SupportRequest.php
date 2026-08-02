@@ -99,4 +99,15 @@ final class SupportRequest
 
         return $success;
     }
+
+    public function countUnassignedRequests(): int
+    {
+        $statement = Database::connection()->prepare(
+            "SELECT COUNT(*) AS total FROM support_requests WHERE assigned_staff_id IS NULL OR assigned_staff_id = 0"
+        );
+        $statement->execute();
+        $result = $statement->get_result()->fetch_assoc();
+        $statement->close();
+        return (int) ($result['total'] ?? 0);
+    }
 }

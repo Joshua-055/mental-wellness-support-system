@@ -111,4 +111,15 @@ final class Appointment
 
         return $success;
     }
+
+    public function countUnassignedAppointments(): int
+    {
+        $statement = Database::connection()->prepare(
+            "SELECT COUNT(*) AS total FROM appointments WHERE staff_id IS NULL OR staff_id = 0"
+        );
+        $statement->execute();
+        $result = $statement->get_result()->fetch_assoc();
+        $statement->close();
+        return (int) ($result['total'] ?? 0);
+    }
 }
