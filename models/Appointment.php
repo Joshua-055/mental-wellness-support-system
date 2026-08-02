@@ -70,4 +70,45 @@ final class Appointment
 
         return $appointments;
     }
+
+    // 获取所有预约记录 (Staff 视角)
+    public function getAllAppointments(): array
+    {
+        $statement = Database::connection()->prepare(
+            'SELECT 
+                a.*, 
+                u.full_name AS student_name,
+                sr.description AS support_description
+             FROM appointments a
+             LEFT JOIN users u ON a.user_id = u.id
+             LEFT JOIN support_requests sr ON a.support_request_id = sr.id
+             ORDER BY a.created_at DESC'
+        );
+
+        $statement->execute();
+        $result = $statement->get_result();
+        $appointments = [];
+        while ($row = $result->fetch_assoc()) {
+            $appointments[] = $row;
+        }
+        $statement->close();
+
+        return $appointments;
+    }
+
+    // 分配辅导员接单
+    public function assignStaffWithRemark(int $appointmentId, int $staffId, string $remark): bool
+    {
+        $statement = Database::connection()->prepare(
+            "UPDATE appointments 
+             SET staff_id = ?, staff_remark = ?, STATUS = 'approved', updated_at = NOW() 
+             WHERE id = ? "
+        );
+
+        $statement->bind_param('isi', $staffId, $remark, $appointmentId);
+        $success = $statement->execute();
+        $statement->close();
+
+        return $success;
+    }
 }

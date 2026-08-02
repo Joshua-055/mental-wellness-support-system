@@ -38,3 +38,5 @@ require_once APP_ROOT . '/controllers/AppointmentController.php';
 require_once APP_ROOT . '/controllers/support_requestController.php';
 require_once APP_ROOT . '/models/SupportRequest.php';
 require_once APP_ROOT . '/models/Appointment.php';
+require_once APP_ROOT . '/controllers/staffAppointmentController.php';
+require_once APP_ROOT . '/controllers/staffSupportRequestController.php';
