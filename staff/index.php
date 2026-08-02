@@ -34,6 +34,10 @@ switch ($page) {
         (new staffAppointmentController())->takeSave();
         break;
 
+    case 'support_request_take':
+        (new StaffSupportRequestController())->takeCase();
+        break;
+
     default:
         echo "404 Page Not Found";
 

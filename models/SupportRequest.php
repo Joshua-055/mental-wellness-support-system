@@ -9,18 +9,18 @@ final class SupportRequest
         $statement = Database::connection()->prepare(
             'INSERT INTO support_requests (user_id, checkin_id, category_id, description, priority, STATUS, assigned_staff_id, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, NOW(), NOW())'
         );
-        
+
         // 2. 绑定参数 (mysqli 专属语法)
         // 'iiisssi' 代表数据类型：i=整型(int), s=字符串(string)
         // 顺序对应: userId(i), checkinId(i), categoryId(i), description(s), priority(s), status(s), assignedStaffId(i)
-       $statement->bind_param('iiisssi', $userId, $checkinId, $categoryId, $description, $priority, $status, $assignedStaffId);
-        
+        $statement->bind_param('iiisssi', $userId, $checkinId, $categoryId, $description, $priority, $status, $assignedStaffId);
+
         // 3. 执行并获取结果
         $success = $statement->execute();
-        
+
         // 4. 关闭 statement
         $statement->close();
-        
+
         return $success;
     }
 
@@ -35,15 +35,15 @@ final class SupportRequest
              WHERE sr.user_id = ? 
              ORDER BY sr.created_at DESC'
         );
-        
+
         $statement->bind_param('i', $userId);
         $statement->execute();
-        
+
         $result = $statement->get_result();
         $requests = $result->fetch_all(MYSQLI_ASSOC);
-        
+
         $statement->close();
-        
+
         return $requests;
     }
 
@@ -56,13 +56,47 @@ final class SupportRequest
              LEFT JOIN wellness_categories wc ON sr.category_id = wc.id 
              WHERE sr.id = ? AND sr.user_id = ?'
         );
-        
+
         $statement->bind_param('ii', $id, $userId);
         $statement->execute();
-        
+
         $result = $statement->get_result()->fetch_assoc();
         $statement->close();
-        
+
         return $result ?: null; // 如果找不到，返回 null
+    }
+
+    public function getAllRequests(): array
+    {
+        $statement = Database::connection()->prepare(
+            'SELECT sr.*, u.full_name AS student_name 
+         FROM support_requests sr
+         LEFT JOIN users u ON sr.user_id = u.id
+         ORDER BY sr.created_at DESC'
+        );
+        $statement->execute();
+        $result = $statement->get_result();
+        $data = [];
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+        $statement->close();
+        return $data;
+    }
+
+    // 🌟 在这里补上这个方法，用来更新指派员工和状态
+    public function assignStaff(int $requestId, int $staffId): bool
+    {
+        $statement = Database::connection()->prepare(
+            "UPDATE support_requests 
+             SET assigned_staff_id = ?, STATUS = 'under_review', updated_at = NOW() 
+             WHERE id = ?"
+        );
+
+        $statement->bind_param('ii', $staffId, $requestId);
+        $success = $statement->execute();
+        $statement->close();
+
+        return $success;
     }
 }
