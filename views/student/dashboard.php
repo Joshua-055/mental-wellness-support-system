@@ -11,8 +11,8 @@ $initial = escape(strtoupper(substr(trim((string) ($currentUser['full_name'] ?? 
         <a class="brand dashboard-brand" href="../index.php"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span><span>mindful</span></a>
         <nav class="side-nav">
             <a class="side-link active" href="./"><span class="nav-icon">⌂</span>Dashboard</a>
-            <a class="side-link" href="checkin.php"><span class="nav-icon">♡</span>Wellness Check-In</a>
-            <a class="side-link" href="checkin-history.php"><span class="nav-icon">◷</span>History</a>
+            <a class="side-link" href="index.php?page=checkin"><span class="nav-icon">♡</span>Wellness Check-In</a>
+            <a class="side-link" href="index.php?page=checkin_history"><span class="nav-icon">◷</span>History</a>
             <a class="side-link" href="resources.php"><span class="nav-icon">▤</span>Resources</a>
             <a class="side-link" href="index.php?page=appointments"><span class="nav-icon">□</span>Appointments</a>
             <a class="side-link" href="index.php?page=support_request"><span class="nav-icon">◎</span>Support Requests</a>
@@ -48,7 +48,7 @@ $initial = escape(strtoupper(substr(trim((string) ($currentUser['full_name'] ?? 
         </section>
 
         <section class="mood-section glass-surface" aria-labelledby="mood-title">
-            <div class="section-heading inline-heading"><div><p class="section-kicker">DAILY CHECK-IN</p><h2 id="mood-title">Choose your mood</h2></div><a href="checkin.php">Full check-in <span>→</span></a></div>
+            <div class="section-heading inline-heading"><div><p class="section-kicker">DAILY CHECK-IN</p><h2 id="mood-title">Choose your mood</h2></div><a href="index.php?page=checkin">Full check-in <span>→</span></a></div>
             <div class="mood-options" role="group" aria-label="How are you feeling today?">
                 <button class="mood-option" type="button" data-mood="Excellent"><span>😊</span><strong>Excellent</strong><small>Feeling great</small></button>
                 <button class="mood-option" type="button" data-mood="Good"><span>🙂</span><strong>Good</strong><small>Feeling steady</small></button>
@@ -94,6 +94,6 @@ $initial = escape(strtoupper(substr(trim((string) ($currentUser['full_name'] ?? 
             </article>
         </section>
 
-        <section class="quick-actions" aria-labelledby="quick-title"><div class="section-heading"><div><p class="section-kicker">TAKE THE NEXT STEP</p><h2 id="quick-title">Quick actions</h2></div></div><div class="action-grid"><a href="checkin.php" class="quick-action primary-action"><span>＋</span><b>New check-in</b><small>Take a moment</small></a><a href="index.php?page=appointments" class="quick-action"><span>□</span><b>Book appointment</b><small>Talk with someone</small></a><a href="index.php?page=support_request" class="quick-action"><span>◎</span><b>Request support</b><small>We are here for you</small></a><a href="resources.php" class="quick-action"><span>▤</span><b>Browse resources</b><small>Find what helps</small></a></div></section>
+        <section class="quick-actions" aria-labelledby="quick-title"><div class="section-heading"><div><p class="section-kicker">TAKE THE NEXT STEP</p><h2 id="quick-title">Quick actions</h2></div></div><div class="action-grid"><a href="index.php?page=checkin" class="quick-action primary-action"><span>＋</span><b>New check-in</b><small>Take a moment</small></a><a href="index.php?page=appointments" class="quick-action"><span>□</span><b>Book appointment</b><small>Talk with someone</small></a><a href="index.php?page=support_request" class="quick-action"><span>◎</span><b>Request support</b><small>We are here for you</small></a><a href="resources.php" class="quick-action"><span>▤</span><b>Browse resources</b><small>Find what helps</small></a></div></section>
     </section>
 </main>

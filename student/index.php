@@ -10,6 +10,18 @@ switch ($page) {
         (new StudentDashboardController())->index();
         break;
 
+    case 'checkin':
+        (new WellnessController())->checkin();
+        break;
+
+    case 'checkin_history':
+        (new WellnessController())->history();
+        break;
+
+    case 'checkin_save':
+        (new WellnessController())->save();
+        break;
+
     case 'appointments':
         (new AppointmentController())->index();
         break;
