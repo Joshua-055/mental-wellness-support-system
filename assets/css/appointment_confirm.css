@@ -1,0 +1,197 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    overflow: hidden;
+}
+
+/* 🚀 核心修改：卡片整体放大 */
+.modal-card {
+    width: 100%;
+    max-width: 520px;
+    /* 从 400px 扩大到 520px */
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 28px;
+    /* 圆角更大更平滑 */
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.15);
+    padding: 40px;
+    /* 内边距变得更宽敞 */
+}
+
+/* 🚀 标题与描述字体放大 */
+.modal-title {
+    font-size: 26px;
+    /* 标题更醒目 */
+    font-weight: 700;
+    color: #1a2535;
+    margin-bottom: 10px;
+}
+
+.modal-desc {
+    font-size: 16px;
+    /* 描述文字放大 */
+    color: #77869a;
+    margin-bottom: 30px;
+}
+
+.summary-box {
+    background: rgba(0, 122, 255, 0.04);
+    border: 1px solid rgba(0, 122, 255, 0.1);
+    border-radius: 16px;
+    padding: 20px 24px;
+    /* 信息框更饱满 */
+    margin-bottom: 30px;
+}
+
+/* 🚀 展示信息字体放大 */
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    /* 日期和时间的字号变大 */
+}
+
+.summary-item:not(:last-child) {
+    margin-bottom: 16px;
+}
+
+.label {
+    color: #607087;
+    font-weight: 600;
+}
+
+.value {
+    color: #007aff;
+    font-weight: 700;
+    font-size: 17px;
+}
+
+.form-group {
+    margin-bottom: 28px;
+}
+
+/* 🚀 表单标签字体放大 */
+.form-group label {
+    display: block;
+    font-size: 16px;
+    /* 标签字号变大 */
+    font-weight: 600;
+    color: #4a5568;
+    margin-bottom: 12px;
+}
+
+/* 🚀 输入框和下拉菜单更宽大 */
+select,
+textarea {
+    width: 100%;
+    padding: 16px 20px;
+    /* 输入框内部空间更大 */
+    border: 1.5px solid #e2e8f0;
+    border-radius: 14px;
+    background-color: #f8fafc;
+    font-size: 16px;
+    /* 里面的字号变大 */
+    color: #1a2535;
+    font-family: inherit;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+select {
+    cursor: pointer;
+    appearance: auto;
+}
+
+select:hover,
+textarea:hover {
+    border-color: #cbd5e1;
+}
+
+select:focus,
+textarea:focus {
+    border-color: #007aff;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.15);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 110px;
+    /* 文本框默认更高 */
+    line-height: 1.6;
+}
+
+#reasonGroup {
+    display: none;
+    animation: fadeInDown 0.3s ease forwards;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.btn-group {
+    display: flex;
+    gap: 16px;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+/* 🚀 按钮尺寸放大 */
+.modal-card.btn {
+    height: 52px;
+    /* 按钮变高 */
+    padding: 0 32px;
+    /* 按钮变长 */
+    border-radius: 14px;
+    font-size: 16px;
+    /* 按钮字号变大 */
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.btn-cancel {
+    background: #f1f5f9;
+    color: #64748b;
+}
+
+.btn-cancel:hover {
+    background: #e2e8f0;
+    color: #1e293b;
+}
+
+.btn-confirm {
+    background: #007aff;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 122, 255, 0.25);
+    flex: 1;
+}
+
+.btn-confirm:hover {
+    background: #0056b3;
+    box-shadow: 0 4px 12px rgba(0, 86, 179, 0.3);
+}
