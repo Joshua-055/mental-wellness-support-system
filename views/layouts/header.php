@@ -1,5 +1,11 @@
 <?php
 require_once dirname(__DIR__, 2) . '/config/app.php';
+
+$cssVersion = static function (string $file): string {
+    $path = dirname(__DIR__, 2) . '/assets/css/' . $file . '.css';
+
+    return is_file($path) ? (string) filemtime($path) : '1';
+};
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,10 +33,10 @@ require_once dirname(__DIR__, 2) . '/config/app.php';
         rel="stylesheet"
     >
 
-    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/base.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/base.css?v=<?= $cssVersion('base') ?>">
     <?php foreach (($pageStyles ?? []) as $pageStyle): ?>
-        <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/<?= htmlspecialchars($pageStyle) ?>.css">
+        <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/<?= htmlspecialchars($pageStyle) ?>.css?v=<?= $cssVersion($pageStyle) ?>">
     <?php endforeach; ?>
-    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/theme.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/theme.css?v=<?= $cssVersion('theme') ?>">
 </head>
 <body>
