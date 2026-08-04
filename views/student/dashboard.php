@@ -14,8 +14,8 @@ $initial = escape(strtoupper(substr(trim((string) ($currentUser['full_name'] ?? 
             <a class="side-link" href="checkin.php"><span class="nav-icon">♡</span>Wellness Check-In</a>
             <a class="side-link" href="checkin-history.php"><span class="nav-icon">◷</span>History</a>
             <a class="side-link" href="resources.php"><span class="nav-icon">▤</span>Resources</a>
-            <a class="side-link" href="appointments.php"><span class="nav-icon">□</span>Appointments</a>
-            <a class="side-link" href="support-request.php"><span class="nav-icon">◎</span>Support Requests</a>
+            <a class="side-link" href="index.php?page=appointments"><span class="nav-icon">□</span>Appointments</a>
+            <a class="side-link" href="index.php?page=support_request"><span class="nav-icon">◎</span>Support Requests</a>
         </nav>
         <div class="sidebar-bottom">
             <a class="side-link" href="#"><span class="nav-icon">⚙</span>Settings</a>
@@ -71,7 +71,7 @@ $initial = escape(strtoupper(substr(trim((string) ($currentUser['full_name'] ?? 
                 <div class="resource-carousel">
                     <a class="resource-card blue-resource" href="resources.php"><span class="resource-icon">⌇</span><div><h3>Managing academic stress</h3><p>Small, practical ways to ease study pressure.</p></div><span class="resource-link">Explore →</span></a>
                     <a class="resource-card green-resource" href="resources.php"><span class="resource-icon">☼</span><div><h3>Mindfulness exercises</h3><p>Take a quiet five minutes for yourself.</p></div><span class="resource-link">Explore →</span></a>
-                    <a class="resource-card lilac-resource" href="appointments.php"><span class="resource-icon">◌</span><div><h3>Campus counselling</h3><p>Friendly, confidential support is here.</p></div><span class="resource-link">Explore →</span></a>
+                    <a class="resource-card lilac-resource" href="index.php?page=appointments"><span class="resource-icon">◌</span><div><h3>Campus counselling</h3><p>Friendly, confidential support is here.</p></div><span class="resource-link">Explore →</span></a>
                 </div>
             </article>
 
@@ -79,7 +79,7 @@ $initial = escape(strtoupper(substr(trim((string) ($currentUser['full_name'] ?? 
                 <div class="section-heading"><div><p class="section-kicker">UPCOMING</p><h2>Appointment</h2></div><span class="status-badge">Confirmed</span></div>
                 <div class="appointment-date"><span class="date-box"><b>24</b><small>THU</small></span><div><h3>2:00 PM – 2:45 PM</h3><p>with Dr. Emily Tan</p></div></div>
                 <div class="appointment-meta"><span>◉</span> Student Wellbeing Centre · Room B-12</div>
-                <a class="soft-button" href="appointments.php">View details <span>→</span></a>
+                <a class="soft-button" href="index.php?page=appointments">View details <span>→</span></a>
             </article>
 
             <article class="history-card glass-surface">
@@ -89,11 +89,11 @@ $initial = escape(strtoupper(substr(trim((string) ($currentUser['full_name'] ?? 
             </article>
 
             <article class="support-card glass-surface">
-                <div class="section-heading"><div><p class="section-kicker">YOUR REQUEST</p><h2>Support status</h2></div><a href="support-request.php">View <span>→</span></a></div>
+                <div class="section-heading"><div><p class="section-kicker">YOUR REQUEST</p><h2>Support status</h2></div><a href="index.php?page=support_request">View <span>→</span></a></div>
                 <div class="support-timeline"><div class="timeline-step done"><i>✓</i><div><strong>Submitted</strong><small>18 July · 10:42 AM</small></div></div><div class="timeline-step done"><i>✓</i><div><strong>Under review</strong><small>Your request is being looked at</small></div></div><div class="timeline-step current"><i></i><div><strong>Assigned</strong><small>We will update you soon</small></div></div><div class="timeline-step"><i></i><div><strong>Completed</strong></div></div></div>
             </article>
         </section>
 
-        <section class="quick-actions" aria-labelledby="quick-title"><div class="section-heading"><div><p class="section-kicker">TAKE THE NEXT STEP</p><h2 id="quick-title">Quick actions</h2></div></div><div class="action-grid"><a href="checkin.php" class="quick-action primary-action"><span>＋</span><b>New check-in</b><small>Take a moment</small></a><a href="appointments.php" class="quick-action"><span>□</span><b>Book appointment</b><small>Talk with someone</small></a><a href="support-request.php" class="quick-action"><span>◎</span><b>Request support</b><small>We are here for you</small></a><a href="resources.php" class="quick-action"><span>▤</span><b>Browse resources</b><small>Find what helps</small></a></div></section>
+        <section class="quick-actions" aria-labelledby="quick-title"><div class="section-heading"><div><p class="section-kicker">TAKE THE NEXT STEP</p><h2 id="quick-title">Quick actions</h2></div></div><div class="action-grid"><a href="checkin.php" class="quick-action primary-action"><span>＋</span><b>New check-in</b><small>Take a moment</small></a><a href="index.php?page=appointments" class="quick-action"><span>□</span><b>Book appointment</b><small>Talk with someone</small></a><a href="index.php?page=support_request" class="quick-action"><span>◎</span><b>Request support</b><small>We are here for you</small></a><a href="resources.php" class="quick-action"><span>▤</span><b>Browse resources</b><small>Find what helps</small></a></div></section>
     </section>
 </main>
