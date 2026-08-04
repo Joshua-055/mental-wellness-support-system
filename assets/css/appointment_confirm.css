@@ -160,7 +160,7 @@ textarea {
 }
 
 /* 🚀 按钮尺寸放大 */
-.modal-card.btn {
+.modal-card.btn {   
     height: 52px;
     /* 按钮变高 */
     padding: 0 32px;
