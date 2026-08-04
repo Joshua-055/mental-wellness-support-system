@@ -13,3 +13,8 @@ Desktop.ini
 
 # Logs
 *.log
+<<<<<<< HEAD
+=======
+
+/config/database.php
+>>>>>>> d76216aef8c8696fbd8015ceb29d198b1e9b4ff5

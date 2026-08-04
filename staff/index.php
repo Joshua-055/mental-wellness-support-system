@@ -38,6 +38,10 @@ switch ($page) {
         (new StaffSupportRequestController())->takeCase();
         break;
 
+    case 'settings':
+        (new SettingsController())->staff();
+        break;
+
     default:
         echo "404 Page Not Found";
 

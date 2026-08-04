@@ -103,35 +103,6 @@
     margin-top: auto;
 }
 
-.sidebar-care {
-    margin: 19px 4px 0;
-    padding: 15px;
-    border-radius: 18px;
-    background: linear-gradient(145deg, rgba(219, 244, 234, .8), rgba(240, 250, 247, .75));
-    color: #38694e;
-}
-
-.care-spark {
-    font-size: 17px;
-    color: #34a964;
-}
-
-.sidebar-care p {
-    font-size: 12px;
-    font-weight: 700;
-    margin: 6px 0;
-}
-
-.sidebar-care a {
-    font-size: 11px;
-    color: #43835d;
-    font-weight: 700;
-}
-
-.sidebar-care a span {
-    padding-left: 3px;
-}
-
 /* 3. 顶部栏与用户卡片 (Topbar & Profile) */
 .dashboard-topbar {
     height: 66px;
@@ -264,10 +235,6 @@
 
     .nav-icon {
         font-size: 19px;
-    }
-
-    .sidebar-care {
-        display: none;
     }
 
     .side-nav {
