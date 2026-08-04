@@ -15,3 +15,6 @@ define('BASE_URL', '/mental-wellness-support-system');
  */
 define('APP_ENV', getenv('APP_ENV') ?: 'local');
 define('PASSWORD_RESET_TTL_MINUTES', 30);
+
+define('APP_TIMEZONE', getenv('APP_TIMEZONE') ?: 'Asia/Kuala_Lumpur');
+date_default_timezone_set(APP_TIMEZONE);

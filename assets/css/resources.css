@@ -1,0 +1,74 @@
+.resources-content {
+    min-width: 0;
+}
+
+.resources-heading {
+    max-width: 760px;
+    margin: 52px 4px 30px;
+}
+
+.resources-heading h1 {
+    margin: 8px 0 10px;
+    color: var(--ink);
+    font-size: clamp(34px, 5vw, 56px);
+    letter-spacing: -.055em;
+}
+
+.resources-heading > p:last-child {
+    margin: 0;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.resource-library-card {
+    min-height: 250px;
+    padding: 25px;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.resource-library-card > span {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    color: #1683ff;
+    background: rgba(0, 122, 255, .12);
+    font-size: 20px;
+}
+
+.resource-library-card h2 {
+    margin: 24px 0 8px;
+    color: var(--ink);
+    font-size: 18px;
+}
+
+.resource-library-card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+.resource-library-card a {
+    margin-top: auto;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+    pointer-events: none;
+}
+
+@media (max-width: 900px) {
+    .resources-grid {
+        grid-template-columns: 1fr;
+    }
+}

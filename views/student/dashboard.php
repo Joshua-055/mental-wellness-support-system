@@ -7,31 +7,10 @@ $initial = escape(strtoupper(substr(trim((string) ($currentUser['full_name'] ?? 
     <div class="dashboard-glow glow-one" aria-hidden="true"></div>
     <div class="dashboard-glow glow-two" aria-hidden="true"></div>
 
-    <aside class="student-sidebar glass-surface" aria-label="Student navigation">
-        <a class="brand dashboard-brand" href="../index.php"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span><span>mindful</span></a>
-        <nav class="side-nav">
-            <a class="side-link active" href="./"><span class="nav-icon">⌂</span>Dashboard</a>
-            <a class="side-link" href="checkin.php"><span class="nav-icon">♡</span>Wellness Check-In</a>
-            <a class="side-link" href="checkin-history.php"><span class="nav-icon">◷</span>History</a>
-            <a class="side-link" href="resources.php"><span class="nav-icon">▤</span>Resources</a>
-            <a class="side-link" href="index.php?page=appointments"><span class="nav-icon">□</span>Appointments</a>
-            <a class="side-link" href="index.php?page=support_request"><span class="nav-icon">◎</span>Support Requests</a>
-        </nav>
-        <div class="sidebar-bottom">
-            <a class="side-link" href="<?= BASE_URL ?>/student/index.php?page=settings"><span class="nav-icon">⚙</span>Settings</a>
-            <a class="side-link" href="<?= BASE_URL ?>/auth/logout.php"><span class="nav-icon">↗</span>Log out</a>
-        </div>
-    </aside>
+    <?php $activePage = 'dashboard'; require APP_ROOT . '/views/layouts/app-sidebar.php'; ?>
 
     <section class="dashboard-content">
-        <header class="dashboard-topbar glass-surface">
-            <button class="mobile-menu" type="button" aria-label="Open navigation">☰</button>
-            <div class="topbar-breadcrumb"><span>Student space</span><strong>Dashboard</strong></div>
-            <div class="topbar-actions">
-                <button class="notification-button" type="button" aria-label="You have 2 notifications"><span>♢</span><i></i></button>
-                <a class="profile-chip" href="<?= BASE_URL ?>/student/index.php?page=settings"><span class="avatar"><?= $initial ?></span><span class="profile-name"><?= $displayName ?> <small>Student</small></span><span class="chevron">⌄</span></a>
-            </div>
-        </header>
+        <?php $topbarTitle = 'Dashboard'; require APP_ROOT . '/views/layouts/dashboard-topbar.php'; ?>
 
         <section class="dashboard-hero" aria-labelledby="greeting-title">
             <div>
@@ -43,7 +22,7 @@ $initial = escape(strtoupper(substr(trim((string) ($currentUser['full_name'] ?? 
         </section>
 
         <section class="mood-section glass-surface" aria-labelledby="mood-title">
-            <div class="section-heading inline-heading"><div><p class="section-kicker">DAILY CHECK-IN</p><h2 id="mood-title">Choose your mood</h2></div><a href="checkin.php">Full check-in <span>→</span></a></div>
+            <div class="section-heading inline-heading"><div><p class="section-kicker">DAILY CHECK-IN</p><h2 id="mood-title">Choose your mood</h2></div><a href="index.php?page=checkin">Full check-in <span>→</span></a></div>
             <div class="mood-options" role="group" aria-label="How are you feeling today?">
                 <button class="mood-option" type="button" data-mood="Excellent"><span>😊</span><strong>Excellent</strong><small>Feeling great</small></button>
                 <button class="mood-option" type="button" data-mood="Good"><span>🙂</span><strong>Good</strong><small>Feeling steady</small></button>
@@ -62,10 +41,10 @@ $initial = escape(strtoupper(substr(trim((string) ($currentUser['full_name'] ?? 
 
         <section class="dashboard-grid">
             <article class="resources-panel glass-surface">
-                <div class="section-heading"><div><p class="section-kicker">JUST FOR YOU</p><h2>Recommended resources</h2></div><a href="resources.php">See all <span>→</span></a></div>
+                <div class="section-heading"><div><p class="section-kicker">JUST FOR YOU</p><h2>Recommended resources</h2></div><a href="<?= BASE_URL ?>/student/index.php?page=resources">See all <span>→</span></a></div>
                 <div class="resource-carousel">
-                    <a class="resource-card blue-resource" href="resources.php"><span class="resource-icon">⌇</span><div><h3>Managing academic stress</h3><p>Small, practical ways to ease study pressure.</p></div><span class="resource-link">Explore →</span></a>
-                    <a class="resource-card green-resource" href="resources.php"><span class="resource-icon">☼</span><div><h3>Mindfulness exercises</h3><p>Take a quiet five minutes for yourself.</p></div><span class="resource-link">Explore →</span></a>
+                    <a class="resource-card blue-resource" href="<?= BASE_URL ?>/student/index.php?page=resources"><span class="resource-icon">⌇</span><div><h3>Managing academic stress</h3><p>Small, practical ways to ease study pressure.</p></div><span class="resource-link">Explore →</span></a>
+                    <a class="resource-card green-resource" href="<?= BASE_URL ?>/student/index.php?page=resources"><span class="resource-icon">☼</span><div><h3>Mindfulness exercises</h3><p>Take a quiet five minutes for yourself.</p></div><span class="resource-link">Explore →</span></a>
                     <a class="resource-card lilac-resource" href="index.php?page=appointments"><span class="resource-icon">◌</span><div><h3>Campus counselling</h3><p>Friendly, confidential support is here.</p></div><span class="resource-link">Explore →</span></a>
                 </div>
             </article>
@@ -89,6 +68,6 @@ $initial = escape(strtoupper(substr(trim((string) ($currentUser['full_name'] ?? 
             </article>
         </section>
 
-        <section class="quick-actions" aria-labelledby="quick-title"><div class="section-heading"><div><p class="section-kicker">TAKE THE NEXT STEP</p><h2 id="quick-title">Quick actions</h2></div></div><div class="action-grid"><a href="checkin.php" class="quick-action primary-action"><span>＋</span><b>New check-in</b><small>Take a moment</small></a><a href="index.php?page=appointments" class="quick-action"><span>□</span><b>Book appointment</b><small>Talk with someone</small></a><a href="index.php?page=support_request" class="quick-action"><span>◎</span><b>Request support</b><small>We are here for you</small></a><a href="resources.php" class="quick-action"><span>▤</span><b>Browse resources</b><small>Find what helps</small></a></div></section>
+        <section class="quick-actions" aria-labelledby="quick-title"><div class="section-heading"><div><p class="section-kicker">TAKE THE NEXT STEP</p><h2 id="quick-title">Quick actions</h2></div></div><div class="action-grid"><a href="index.php?page=checkin" class="quick-action primary-action"><span>＋</span><b>New check-in</b><small>Take a moment</small></a><a href="index.php?page=appointments" class="quick-action"><span>□</span><b>Book appointment</b><small>Talk with someone</small></a><a href="index.php?page=support_request" class="quick-action"><span>◎</span><b>Request support</b><small>We are here for you</small></a><a href="<?= BASE_URL ?>/student/index.php?page=resources" class="quick-action"><span>▤</span><b>Browse resources</b><small>Find what helps</small></a></div></section>
     </section>
 </main>
