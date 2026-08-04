@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 final class WellnessCheckin
 {
+    private const DAILY_LIMIT_MESSAGE = 'You have already completed today\'s wellness check-in. You can check in again tomorrow.';
+
     private const MOOD_SCORES = [
         'very_good' => 100,
         'good' => 82,
@@ -25,17 +27,44 @@ final class WellnessCheckin
             throw new InvalidArgumentException('Please choose a valid mood.');
         }
 
-        $categoryId = $this->defaultCategoryId();
-        $stressLevel = self::STRESS_LEVELS[$mood];
-        $needsFollowUp = $mood === 'very_low' ? 1 : 0;
+        $database = Database::connection();
+        $lockName = 'wellness-checkin:' . $userId . ':' . (new DateTimeImmutable('today'))->format('Y-m-d');
+        if (!$this->acquireDailyLock($database, $lockName)) {
+            throw new RuntimeException('Your check-in is still being processed. Please wait a moment and try again.');
+        }
+
+        try {
+            if ($this->hasCheckinToday($userId)) {
+                throw new DomainException(self::DAILY_LIMIT_MESSAGE);
+            }
+
+            $categoryId = $this->defaultCategoryId();
+            $stressLevel = self::STRESS_LEVELS[$mood];
+            $needsFollowUp = $mood === 'very_low' ? 1 : 0;
+            $statement = $database->prepare(
+                'INSERT INTO wellness_checkins (user_id, category_id, mood, stress_level, COMMENT, needs_follow_up) VALUES (?, ?, ?, ?, ?, ?)'
+            );
+            $statement->bind_param('iisisi', $userId, $categoryId, $mood, $stressLevel, $comment, $needsFollowUp);
+            $saved = $statement->execute();
+            $statement->close();
+
+            return $saved;
+        } finally {
+            $this->releaseDailyLock($database, $lockName);
+        }
+    }
+
+    public function hasCheckinToday(int $userId): bool
+    {
         $statement = Database::connection()->prepare(
-            'INSERT INTO wellness_checkins (user_id, category_id, mood, stress_level, COMMENT, needs_follow_up) VALUES (?, ?, ?, ?, ?, ?)'
+            'SELECT EXISTS(SELECT 1 FROM wellness_checkins WHERE user_id = ? AND created_at >= CURDATE() AND created_at < CURDATE() + INTERVAL 1 DAY) AS has_checkin'
         );
-        $statement->bind_param('iisisi', $userId, $categoryId, $mood, $stressLevel, $comment, $needsFollowUp);
-        $saved = $statement->execute();
+        $statement->bind_param('i', $userId);
+        $statement->execute();
+        $result = (bool) $statement->get_result()->fetch_assoc()['has_checkin'];
         $statement->close();
 
-        return $saved;
+        return $result;
     }
 
     public function recentByUser(int $userId, int $limit = 10): array
@@ -89,6 +118,25 @@ final class WellnessCheckin
         $statement->close();
 
         return $id;
+    }
+
+    private function acquireDailyLock(mysqli $database, string $lockName): bool
+    {
+        $statement = $database->prepare('SELECT GET_LOCK(?, 5) AS acquired');
+        $statement->bind_param('s', $lockName);
+        $statement->execute();
+        $acquired = (int) $statement->get_result()->fetch_assoc()['acquired'] === 1;
+        $statement->close();
+
+        return $acquired;
+    }
+
+    private function releaseDailyLock(mysqli $database, string $lockName): void
+    {
+        $statement = $database->prepare('SELECT RELEASE_LOCK(?)');
+        $statement->bind_param('s', $lockName);
+        $statement->execute();
+        $statement->close();
     }
 
     private function streak(array $checkins, DateTimeImmutable $today): int

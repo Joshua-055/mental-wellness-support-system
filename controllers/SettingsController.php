@@ -83,7 +83,14 @@ final class SettingsController extends Controller
                 $errors[] = 'That email address is already in use.';
                 return;
             }
-            throw $exception;
+            error_log(sprintf(
+                'Profile update failed for user %d: [%d] %s',
+                (int) $account['id'],
+                (int) $exception->getCode(),
+                $exception->getMessage()
+            ));
+            $errors[] = 'We could not update your profile right now. Please try again in a moment.';
+            return;
         }
 
         $_SESSION['user']['full_name'] = $fullName;

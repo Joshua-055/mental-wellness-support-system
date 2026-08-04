@@ -33,6 +33,7 @@ require_once APP_ROOT . '/models/PasswordReset.php';
 require_once APP_ROOT . '/controllers/AuthController.php';
 require_once APP_ROOT . '/controllers/PasswordResetController.php';
 require_once APP_ROOT . '/controllers/SettingsController.php';
+require_once APP_ROOT . '/controllers/ResourcesController.php';
 require_once APP_ROOT . '/controllers/StudentDashboardController.php';
 require_once APP_ROOT . '/controllers/WellnessController.php';
 require_once APP_ROOT . '/controllers/StaffDashboardController.php';

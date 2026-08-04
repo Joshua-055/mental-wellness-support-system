@@ -39,6 +39,12 @@
     background: rgba(0, 122, 255, .18);
 }
 
+.side-link.is-disabled {
+    cursor: not-allowed;
+    opacity: .5;
+    pointer-events: none;
+}
+
 :root[data-theme="dark"] .topbar-breadcrumb strong,
 :root[data-theme="dark"] .profile-name,
 :root[data-theme="dark"] .dashboard-hero h1,
@@ -518,6 +524,156 @@
 
 :root[data-theme="dark"] .dev-reset-link strong {
     color: #78bdff;
+}
+
+/* Wellness check-in and history */
+:root[data-theme="dark"] .wellness-heading h1,
+:root[data-theme="dark"] .history-heading h1,
+:root[data-theme="dark"] .checkin-section-title h2,
+:root[data-theme="dark"] .today-card h2,
+:root[data-theme="dark"] .history-chart h2,
+:root[data-theme="dark"] .recent-checkins h2,
+:root[data-theme="dark"] .history-score > strong,
+:root[data-theme="dark"] .checkin-list strong,
+:root[data-theme="dark"] .empty-history h3 {
+    color: #edf3f9;
+}
+
+:root[data-theme="dark"] .wellness-heading > div > p:last-child,
+:root[data-theme="dark"] .history-heading > div > p:last-child,
+:root[data-theme="dark"] .checkin-section-title p,
+:root[data-theme="dark"] .checkin-mood small,
+:root[data-theme="dark"] .energy-scale,
+:root[data-theme="dark"] .reflection-box small,
+:root[data-theme="dark"] .today-card-top,
+:root[data-theme="dark"] .today-card > p,
+:root[data-theme="dark"] .support-link small,
+:root[data-theme="dark"] .history-score p,
+:root[data-theme="dark"] .history-score > strong span,
+:root[data-theme="dark"] .history-score > small,
+:root[data-theme="dark"] .chart-key,
+:root[data-theme="dark"] .history-svg > div,
+:root[data-theme="dark"] .checkin-list p,
+:root[data-theme="dark"] .trend-value,
+:root[data-theme="dark"] .trend-bars small,
+:root[data-theme="dark"] .empty-history {
+    color: #9eacbe;
+}
+
+:root[data-theme="dark"] .checkin-mood {
+    color: #eaf1f8;
+    border-color: rgba(255, 255, 255, .09);
+    background: rgba(255, 255, 255, .05);
+}
+
+:root[data-theme="dark"] .checkin-mood:hover {
+    background: rgba(255, 255, 255, .085);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .22);
+}
+
+:root[data-theme="dark"] .checkin-mood.selected {
+    color: #fff;
+    border-color: rgba(90, 200, 250, .34);
+    background: linear-gradient(145deg, rgba(0, 122, 255, .28), rgba(90, 200, 250, .12));
+    box-shadow: 0 9px 22px rgba(0, 122, 255, .16);
+}
+
+:root[data-theme="dark"] .checkin-divider,
+:root[data-theme="dark"] .checkin-list article {
+    border-color: rgba(255, 255, 255, .1);
+    background-color: transparent;
+}
+
+:root[data-theme="dark"] .reflection-box {
+    border-color: rgba(255, 255, 255, .1);
+    background: #202c3b;
+}
+
+:root[data-theme="dark"] .reflection-box textarea {
+    color: #edf3f9;
+}
+
+:root[data-theme="dark"] .reflection-box textarea::placeholder {
+    color: #7e8da1;
+}
+
+:root[data-theme="dark"] .support-link {
+    color: #edf3f9;
+}
+
+:root[data-theme="dark"] .support-link > span,
+:root[data-theme="dark"] .date-tile,
+:root[data-theme="dark"] .empty-history > span {
+    color: #69b4ff;
+    background: rgba(0, 122, 255, .14);
+}
+
+:root[data-theme="dark"] .prompt-card,
+:root[data-theme="dark"] .patterns-card {
+    color: #c9ead4;
+    border: 1px solid rgba(52, 199, 89, .14);
+    background: linear-gradient(145deg, rgba(52, 199, 89, .14), rgba(35, 79, 58, .22));
+}
+
+:root[data-theme="dark"] .prompt-card blockquote,
+:root[data-theme="dark"] .patterns-card h2 {
+    color: #daf1e1;
+}
+
+:root[data-theme="dark"] .prompt-card > span,
+:root[data-theme="dark"] .patterns-card > p,
+:root[data-theme="dark"] .pattern-visual {
+    color: #91bfa1;
+}
+
+:root[data-theme="dark"] .chart-tabs,
+:root[data-theme="dark"] .filter-button {
+    background: #1c2939;
+}
+
+:root[data-theme="dark"] .chart-tabs button,
+:root[data-theme="dark"] .filter-button {
+    color: #a8b5c6;
+}
+
+:root[data-theme="dark"] .chart-tabs .active {
+    color: #72b8ff;
+    background: #273547;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+}
+
+:root[data-theme="dark"] .gridline {
+    stroke: #2d3b4d;
+}
+
+:root[data-theme="dark"] .history-dots circle {
+    fill: #172334;
+}
+
+:root[data-theme="dark"] .history-svg b,
+:root[data-theme="dark"] .trend-bars small b {
+    color: #c0ccda;
+}
+
+:root[data-theme="dark"] .score-pill {
+    color: #b8c7d7;
+    background: #2a3849;
+}
+
+:root[data-theme="dark"] .score-pill.positive {
+    color: #65d782;
+    background: rgba(52, 199, 89, .15);
+}
+
+:root[data-theme="dark"] .score-pill.low {
+    color: #ffb36a;
+    background: rgba(255, 159, 10, .14);
+}
+
+:root[data-theme="dark"] .history-success {
+    color: #76dd91;
+    border: 1px solid rgba(52, 199, 89, .16);
+    background: rgba(52, 199, 89, .12);
 }
 
 /* Staff data tables */

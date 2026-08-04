@@ -42,6 +42,10 @@ switch ($page) {
         (new SettingsController())->staff();
         break;
 
+    case 'resources':
+        (new ResourcesController())->staff();
+        break;
+
     default:
         echo "404 Page Not Found";
 

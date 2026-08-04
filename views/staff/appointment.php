@@ -6,46 +6,9 @@ $initial = escape(strtoupper(substr(trim((string) ($currentUser['full_name'] ?? 
 <main class="staff-app">
     <div class="staff-glow staff-glow-blue" aria-hidden="true"></div>
     <div class="staff-glow staff-glow-green" aria-hidden="true"></div>
-    <aside class="staff-sidebar glass-surface" aria-label="Staff navigation">
-        <a class="brand dashboard-brand" href="../index.php"><span class="brand-mark"
-                aria-hidden="true"><span></span><span></span><span></span></span><span>mindful</span></a>
-        <p class="staff-space-label">STAFF SPACE</p>
-        <nav class="side-nav">
-            <a class="side-link" href="./"><span class="nav-icon">⌂</span>Dashboard</a>
-            
-                <!-- Support Requests 导航：一直显示数字，如果没有就显示 0 -->
-            <a class="side-link <?= ($page === 'supportRequest') ? 'active' : '' ?>" href="index.php?page=supportRequest">
-                <span class="nav-icon">◎</span>Support Requests
-                <b class="side-count"><?= $unassignedRequestsCount ?? 0 ?></b>
-            </a>
-            
-            <!-- Appointments 导航 -->
-            <a class="side-link active <?= ($page === 'appointment') ? 'active' : '' ?>" href="index.php?page=appointment">
-                <span class="nav-icon">□</span>Appointments
-                <?php if (!empty($unassignedAppointmentsCount) && $unassignedAppointmentsCount > 0): ?>
-                    <b class="side-count"><?= $unassignedAppointmentsCount ?></b>
-                <?php endif; ?>
-            </a>
-
-            <a class="side-link" href="#"><span class="nav-icon">◉</span>Students</a>
-            <a class="side-link" href="resources.php"><span class="nav-icon">▤</span>Resources</a>
-            <a class="side-link" href="#"><span class="nav-icon">⌁</span>Reports</a>
-        </nav>
-
-        <div class="sidebar-bottom"><a class="side-link" href="<?= BASE_URL ?>/staff/index.php?page=settings"><span class="nav-icon">⚙</span>Settings</a><a
-                class="side-link staff-logout" href="<?= BASE_URL ?>/auth/logout.php"><span class="nav-icon">↗</span>Log
-                out</a></div>
-    </aside>
+    <?php $navigationRole = 'staff'; $activePage = 'appointment'; require APP_ROOT . '/views/layouts/app-sidebar.php'; ?>
     <section class="staff-content">
-        <header class="dashboard-topbar glass-surface"><button class="mobile-menu" type="button"
-                aria-label="Open navigation">☰</button>
-            <div class="topbar-breadcrumb"><span>Staff space</span><strong>Appointment</strong></div>
-            <div class="topbar-actions"><button class="notification-button" type="button"
-                    aria-label="You have 4 notifications"><span>♢</span><i></i></button><a class="profile-chip"
-                    href="<?= BASE_URL ?>/staff/index.php?page=settings"><span class="avatar staff-avatar"><?= $initial ?></span><span
-                        class="profile-name"><?= $displayName ?> <small>Wellness counsellor</small></span><span
-                        class="chevron">⌄</span></a></div>
-        </header>
+        <?php $topbarTitle = 'Appointment'; require APP_ROOT . '/views/layouts/dashboard-topbar.php'; ?>
         <!-- 员工视角的全部预约记录 (Table 布局) -->
         <div class="appointments-history-section">
             <h3 class="section-title">All Student Appointments</h3>

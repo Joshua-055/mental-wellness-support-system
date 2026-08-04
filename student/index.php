@@ -50,6 +50,10 @@ switch ($page) {
         (new SettingsController())->student();
         break;
 
+    case 'resources':
+        (new ResourcesController())->student();
+        break;
+
     default:
         echo "404 Page Not Found";
 }

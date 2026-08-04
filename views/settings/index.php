@@ -10,37 +10,15 @@ $settingsUrl = BASE_URL . ($isStudent ? '/student/index.php?page=settings' : '/s
     <div class="dashboard-glow glow-one" aria-hidden="true"></div>
     <div class="dashboard-glow glow-two" aria-hidden="true"></div>
 
-    <aside class="student-sidebar glass-surface" aria-label="<?= escape($spaceLabel) ?> navigation">
-        <a class="brand dashboard-brand" href="<?= BASE_URL ?>/"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span><span>mindful</span></a>
-        <nav class="side-nav">
-            <?php if ($isStudent): ?>
-                <a class="side-link" href="<?= BASE_URL ?>/student/"><span class="nav-icon">⌂</span>Dashboard</a>
-                <a class="side-link" href="#"><span class="nav-icon">♡</span>Wellness Check-In</a>
-                <a class="side-link" href="#"><span class="nav-icon">◷</span>History</a>
-                <a class="side-link" href="#"><span class="nav-icon">▤</span>Resources</a>
-                <a class="side-link" href="<?= BASE_URL ?>/student/index.php?page=appointments"><span class="nav-icon">□</span>Appointments</a>
-                <a class="side-link" href="<?= BASE_URL ?>/student/index.php?page=support_request"><span class="nav-icon">◎</span>Support Requests</a>
-            <?php else: ?>
-                <a class="side-link" href="<?= BASE_URL ?>/staff/"><span class="nav-icon">⌂</span>Dashboard</a>
-                <a class="side-link" href="<?= BASE_URL ?>/staff/index.php?page=supportRequest"><span class="nav-icon">◎</span>Support Requests</a>
-                <a class="side-link" href="<?= BASE_URL ?>/staff/index.php?page=appointment"><span class="nav-icon">□</span>Appointments</a>
-                <a class="side-link" href="#"><span class="nav-icon">◉</span>Students</a>
-                <a class="side-link" href="#"><span class="nav-icon">▤</span>Resources</a>
-                <a class="side-link" href="#"><span class="nav-icon">⌁</span>Reports</a>
-            <?php endif; ?>
-        </nav>
-        <div class="sidebar-bottom">
-            <a class="side-link active" href="<?= $settingsUrl ?>"><span class="nav-icon">⚙</span>Settings</a>
-            <a class="side-link settings-logout-link" href="<?= BASE_URL ?>/auth/logout.php"><span class="nav-icon">↗</span>Log out</a>
-        </div>
-    </aside>
+    <?php
+    $navigationRole = $role;
+    $activePage = 'settings';
+    $sidebarClass = 'student-sidebar';
+    require APP_ROOT . '/views/layouts/app-sidebar.php';
+    ?>
 
     <section class="dashboard-content settings-content">
-        <header class="dashboard-topbar glass-surface">
-            <button class="mobile-menu" type="button" aria-label="Open navigation">☰</button>
-            <div class="topbar-breadcrumb"><span><?= escape($spaceLabel) ?> space</span><strong>Settings</strong></div>
-            <a class="profile-chip" href="<?= $settingsUrl ?>" aria-current="page"><span class="avatar<?= $isStudent ? '' : ' staff-avatar' ?>"><?= $initial ?></span><span class="profile-name"><?= $displayName ?><small><?= $isStudent ? 'Student' : 'Wellness staff' ?></small></span></a>
-        </header>
+        <?php $topbarTitle = 'Settings'; require APP_ROOT . '/views/layouts/dashboard-topbar.php'; ?>
 
         <header class="settings-heading">
             <p class="section-kicker">PERSONAL PREFERENCES</p>
