@@ -32,7 +32,7 @@ $initial = escape(strtoupper(substr(trim((string) ($currentUser['full_name'] ?? 
             <a class="side-link" href="#"><span class="nav-icon">⌁</span>Reports</a>
         </nav>
 
-        <div class="sidebar-bottom"><a class="side-link" href="#"><span class="nav-icon">⚙</span>Settings</a><a
+        <div class="sidebar-bottom"><a class="side-link" href="<?= BASE_URL ?>/staff/index.php?page=settings"><span class="nav-icon">⚙</span>Settings</a><a
                 class="side-link staff-logout" href="<?= BASE_URL ?>/auth/logout.php"><span class="nav-icon">↗</span>Log
                 out</a></div>
     </aside>
@@ -42,7 +42,7 @@ $initial = escape(strtoupper(substr(trim((string) ($currentUser['full_name'] ?? 
             <div class="topbar-breadcrumb"><span>Staff space</span><strong>Appointment</strong></div>
             <div class="topbar-actions"><button class="notification-button" type="button"
                     aria-label="You have 4 notifications"><span>♢</span><i></i></button><a class="profile-chip"
-                    href="#"><span class="avatar staff-avatar"><?= $initial ?></span><span
+                    href="<?= BASE_URL ?>/staff/index.php?page=settings"><span class="avatar staff-avatar"><?= $initial ?></span><span
                         class="profile-name"><?= $displayName ?> <small>Wellness counsellor</small></span><span
                         class="chevron">⌄</span></a></div>
         </header>

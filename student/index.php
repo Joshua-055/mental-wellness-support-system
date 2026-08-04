@@ -34,6 +34,10 @@ switch ($page) {
         (new support_requestController())->detail();
         break;
 
+    case 'settings':
+        (new SettingsController())->student();
+        break;
+
     default:
         echo "404 Page Not Found";
 }

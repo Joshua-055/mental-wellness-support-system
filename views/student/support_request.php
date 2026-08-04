@@ -20,12 +20,7 @@ $initial = escape(strtoupper(substr(trim((string) ($currentUser['full_name'] ?? 
                 Requests</a>
         </nav>
         <div class="sidebar-bottom">
-            <a class="side-link" href="#"><span class="nav-icon">⚙</span>Settings</a>
-            <div class="sidebar-care">
-                <span class="care-spark">✦</span>
-                <p>Need to talk?</p>
-                <a href="support-request.php">Get support <span>→</span></a>
-            </div>
+            <a class="side-link" href="<?= BASE_URL ?>/student/index.php?page=settings"><span class="nav-icon">⚙</span>Settings</a>
             <a class="side-link" href="<?= BASE_URL ?>/auth/logout.php"><span class="nav-icon">↗</span>Log out</a>
         </div>
     </aside>
@@ -37,7 +32,7 @@ $initial = escape(strtoupper(substr(trim((string) ($currentUser['full_name'] ?? 
             <div class="topbar-actions">
                 <button class="notification-button" type="button"
                     aria-label="You have 2 notifications"><span>♢</span><i></i></button>
-                <a class="profile-chip" href="#"><span class="avatar"><?= $initial ?></span><span
+                <a class="profile-chip" href="<?= BASE_URL ?>/student/index.php?page=settings"><span class="avatar"><?= $initial ?></span><span
                         class="profile-name"><?= $displayName ?> <small>Student</small></span><span
                         class="chevron">⌄</span></a>
             </div>
