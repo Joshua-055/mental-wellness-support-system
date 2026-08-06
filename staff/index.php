@@ -55,7 +55,30 @@ switch ($page) {
         break;
 
     case 'resources':
-        (new ResourcesController())->staff();
+
+        $action = $_GET['action'] ?? '';
+
+        $controller = new ResourcesController();
+
+        switch ($action) {
+
+            case 'store':
+                $controller->store();
+                break;
+
+            case 'update':
+                $controller->update();
+                break;
+
+            case 'delete':
+                $controller->delete();
+                break;
+
+            default:
+                $controller->staff();
+                break;
+        }
+
         break;
 
     default:
