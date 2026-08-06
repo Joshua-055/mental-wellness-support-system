@@ -720,3 +720,22 @@
 :root[data-theme="dark"] .table-responsive-wrapper::-webkit-scrollbar-thumb {
     background: #526278;
 }
+
+/* Resources */
+
+:root[data-theme="dark"] .resource-panel {
+    background:rgba(23,31,44,.92);
+    border-left-color:rgba(255,255,255,.1);
+}
+
+:root[data-theme="dark"] .resource-panel h6 {
+    color:#edf3f9;
+}
+
+:root[data-theme="dark"] .resource-panel li {
+    color:#9eacbe;
+}
+
+:root[data-theme="dark"] .resource-description {
+    color:#9eacbe;
+}
