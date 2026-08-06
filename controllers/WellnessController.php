@@ -7,6 +7,9 @@ final class WellnessController extends Controller
     {
         $currentUser = requireRole('student');
         $model = new WellnessCheckin();
+        $requestedMood = (string) ($_GET['mood'] ?? '');
+        $allowedMoods = ['excellent', 'good', 'neutral', 'stressed', 'overwhelmed'];
+        $initialMood = in_array($requestedMood, $allowedMoods, true) ? $requestedMood : '';
         $hasCheckinToday = $model->hasCheckinToday((int) $currentUser['id']);
         $this->render('student/checkin', [
             'pageTitle' => 'Wellness Check-In | Mindful',
@@ -14,6 +17,7 @@ final class WellnessController extends Controller
             'pageScripts' => ['wellness'],
             'currentUser' => $currentUser,
             'hasCheckinToday' => $hasCheckinToday,
+            'initialMood' => $initialMood,
             'errorMessage' => $_SESSION['flash_error'] ?? ($hasCheckinToday
                 ? 'You have already completed today\'s wellness check-in. You can check in again tomorrow.'
                 : null),

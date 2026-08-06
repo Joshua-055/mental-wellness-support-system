@@ -430,6 +430,22 @@
     box-shadow: 0 4px 10px rgba(0, 122, 255, 0.3);
 }
 
+.btn-complete {
+    margin-top: 7px;
+    padding: 6px 14px;
+    border: 0;
+    border-radius: 8px;
+    background: #22a06b;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.btn-complete:hover { background: #168557; }
+.btn-complete:disabled { cursor: wait; opacity: .65; }
+.request-time{display:block;margin-top:7px;color:#8290a3;font-size:10px;white-space:nowrap}.completed-time{color:#23865e;font-weight:700}
+
 .empty-state { 
     text-align: center; 
     padding: 60px !important; 

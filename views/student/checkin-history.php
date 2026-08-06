@@ -1,7 +1,7 @@
 <?php
 $displayName = escape((string) ($currentUser['full_name'] ?? 'Student'));
 $initial = escape(strtoupper(substr(trim((string) ($currentUser['full_name'] ?? 'S')), 0, 1)));
-$moodDetails = ['very_good' => ['😊', 'Feeling great', 'positive'], 'good' => ['🙂', 'Feeling good', 'positive'], 'neutral' => ['😐', 'Feeling okay', ''], 'low' => ['😔', 'Feeling low', 'low'], 'very_low' => ['😣', 'Feeling overwhelmed', 'low']];
+$moodDetails = ['excellent' => ['😊', 'Excellent', 'positive'], 'good' => ['🙂', 'Good', 'positive'], 'neutral' => ['😐', 'Neutral', ''], 'stressed' => ['😔', 'Stressed', 'low'], 'overwhelmed' => ['😢', 'Overwhelmed', 'low']];
 $trendScores = array_column($summary['trend'], 'score');
 $hasTrend = count(array_filter($trendScores, static fn($score): bool => $score !== null)) > 0;
 ?>

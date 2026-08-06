@@ -26,11 +26,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const moodOptions = document.querySelectorAll('.mood-option');
     const moodFeedback = document.querySelector('.mood-feedback');
     const moodMessages = {
-        Excellent: 'Wonderful. Capture what is making today feel bright.',
-        Good: 'Glad to hear it. Keep making room for what supports you.',
-        Neutral: 'Feeling neutral is completely okay. You are doing well by checking in.',
-        Stressed: 'It sounds like a lot. Try a small pause, or explore support when you are ready.',
-        Overwhelmed: 'You do not have to carry everything alone. Support is available when you need it.'
+        excellent: 'Wonderful. Continue to your full check-in.',
+        good: 'Glad to hear it. Continue to your full check-in.',
+        neutral: 'Feeling neutral is completely okay. Continue to your full check-in.',
+        stressed: 'It sounds like a lot. Continue so you can reflect or request support.',
+        overwhelmed: 'You do not have to carry everything alone. Continue to your full check-in.'
     };
 
     moodOptions.forEach((option) => {
@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
             option.classList.add('selected');
             option.setAttribute('aria-pressed', 'true');
             if (moodFeedback) moodFeedback.textContent = moodMessages[option.dataset.mood];
+            window.location.href = `index.php?page=checkin&mood=${encodeURIComponent(option.dataset.mood)}`;
         });
     });
 });

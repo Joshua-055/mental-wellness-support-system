@@ -50,7 +50,10 @@ $initial = escape(strtoupper(substr(trim((string) ($currentUser['full_name'] ?? 
                                     <h3><?= htmlspecialchars($subject) ?></h3>
                                     <p><strong>Category:</strong>
                                         <?= htmlspecialchars($request['category_name'] ?? 'Uncategorized') ?></p>
-                                    <p>Submitted: <?= date('d M Y', strtotime($request['created_at'])) ?></p>
+                                    <p>Created: <?= date('d M Y, h:i A', strtotime($request['created_at'])) ?></p>
+                                    <?php if (in_array($request['STATUS'], ['resolved', 'closed'], true)): ?>
+                                        <p>Completed: <?= date('d M Y, h:i A', strtotime($request['updated_at'])) ?></p>
+                                    <?php endif; ?>
                                 </div>
 
                                 <div class="request-status">

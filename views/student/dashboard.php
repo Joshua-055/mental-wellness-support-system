@@ -24,13 +24,13 @@ $initial = escape(strtoupper(substr(trim((string) ($currentUser['full_name'] ?? 
         <section class="mood-section glass-surface" aria-labelledby="mood-title">
             <div class="section-heading inline-heading"><div><p class="section-kicker">DAILY CHECK-IN</p><h2 id="mood-title">Choose your mood</h2></div><a href="index.php?page=checkin">Full check-in <span>→</span></a></div>
             <div class="mood-options" role="group" aria-label="How are you feeling today?">
-                <button class="mood-option" type="button" data-mood="Excellent"><span>😊</span><strong>Excellent</strong><small>Feeling great</small></button>
-                <button class="mood-option" type="button" data-mood="Good"><span>🙂</span><strong>Good</strong><small>Feeling steady</small></button>
-                <button class="mood-option selected" type="button" data-mood="Neutral" aria-pressed="true"><span>😐</span><strong>Neutral</strong><small>Taking it easy</small></button>
-                <button class="mood-option" type="button" data-mood="Stressed"><span>😔</span><strong>Stressed</strong><small>Feeling tense</small></button>
-                <button class="mood-option" type="button" data-mood="Overwhelmed"><span>😢</span><strong>Overwhelmed</strong><small>Need a pause</small></button>
+                <button class="mood-option" type="button" data-mood="excellent"><span>😊</span><strong>Excellent</strong><small>Feeling great</small></button>
+                <button class="mood-option" type="button" data-mood="good"><span>🙂</span><strong>Good</strong><small>Feeling steady</small></button>
+                <button class="mood-option" type="button" data-mood="neutral" aria-pressed="false"><span>😐</span><strong>Neutral</strong><small>Taking it easy</small></button>
+                <button class="mood-option" type="button" data-mood="stressed"><span>😔</span><strong>Stressed</strong><small>Feeling tense</small></button>
+                <button class="mood-option" type="button" data-mood="overwhelmed"><span>😢</span><strong>Overwhelmed</strong><small>Need a pause</small></button>
             </div>
-            <p class="mood-feedback" role="status" aria-live="polite">Feeling neutral is completely okay. You are doing well by checking in.</p>
+            <p class="mood-feedback" role="status" aria-live="polite">Choose a mood to continue your daily check-in.</p>
         </section>
 
         <section class="summary-grid" aria-label="Today's wellness summary">

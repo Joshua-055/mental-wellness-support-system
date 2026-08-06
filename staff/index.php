@@ -18,6 +18,14 @@ switch ($page) {
         (new StaffSupportRequestController())->index();
         break;
 
+    case 'students':
+        (new StaffStudentController())->index();
+        break;
+
+    case 'student_detail':
+        (new StaffStudentController())->show();
+        break;
+
     case 'appointmentRemark':
         (new staffAppointmentController())->create();
         break;
@@ -36,6 +44,10 @@ switch ($page) {
 
     case 'support_request_take':
         (new StaffSupportRequestController())->takeCase();
+        break;
+
+    case 'support_request_complete':
+        (new StaffSupportRequestController())->completeCase();
         break;
 
     case 'settings':
