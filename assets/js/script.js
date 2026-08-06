@@ -1,17 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('#loginForm');
-    const password = document.querySelector('#password');
-    const toggle = document.querySelector('.password-toggle');
     const message = document.querySelector('#formMessage');
 
-    if (toggle && password) {
+    document.querySelectorAll('.password-toggle').forEach((toggle) => {
+        const password = toggle.closest('.input-wrap')?.querySelector('input');
+
+        if (!password) {
+            return;
+        }
+
         toggle.addEventListener('click', () => {
             const showPassword = password.type === 'password';
             password.type = showPassword ? 'text' : 'password';
             toggle.setAttribute('aria-pressed', String(showPassword));
             toggle.setAttribute('aria-label', showPassword ? 'Hide password' : 'Show password');
         });
-    }
+    });
 
     if (form) {
         form.addEventListener('submit', (event) => {

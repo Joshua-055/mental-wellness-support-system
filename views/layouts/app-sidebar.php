@@ -23,7 +23,6 @@ $staffItems = [
     ['key' => 'appointment', 'icon' => '□', 'label' => 'Appointments', 'url' => BASE_URL . '/staff/index.php?page=appointment', 'badge' => $unassignedAppointmentsCount ?? null],
     ['key' => 'students', 'icon' => '◉', 'label' => 'Students', 'url' => BASE_URL . '/staff/index.php?page=students'],
     ['key' => 'resources', 'icon' => '▤', 'label' => 'Resources', 'url' => BASE_URL . '/staff/index.php?page=resources'],
-    ['key' => 'reports', 'icon' => '⌁', 'label' => 'Reports', 'url' => null],
 ];
 
 $navigationItems = $isStaffNavigation ? $staffItems : $studentItems;

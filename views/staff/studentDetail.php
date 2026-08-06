@@ -1,5 +1,5 @@
 <?php
-$moodLabels = ['excellent' => 'Excellent', 'good' => 'Good', 'neutral' => 'Neutral', 'stressed' => 'Stressed', 'overwhelmed' => 'Overwhelmed'];
+$moodLabels = ['excellent' => 'Excellent', 'very_good' => 'Excellent', 'good' => 'Good', 'neutral' => 'Neutral', 'stressed' => 'Stressed', 'low' => 'Stressed', 'overwhelmed' => 'Overwhelmed', 'very_low' => 'Overwhelmed'];
 $statusLabel = static fn(string $value): string => ucwords(str_replace('_', ' ', $value));
 $initial = $student ? strtoupper(substr($student['full_name'], 0, 1)) : '?';
 ?>
@@ -30,7 +30,7 @@ $initial = $student ? strtoupper(substr($student['full_name'], 0, 1)) : '?';
                         <?php foreach ($wellness['trend7'] as $point): ?><div class="trend-column"><span class="trend-value"><?= $point['score'] === null ? '—' : (int) $point['score'] ?></span><i style="height: <?= $point['score'] === null ? 5 : max(8, (int) $point['score']) ?>%" class="<?= $point['score'] === null ? 'empty' : '' ?>"></i><small><?= escape($point['label']) ?></small></div><?php endforeach; ?>
                     </div></section>
                     <section class="student-panel glass-surface"><div class="panel-title"><div><p class="section-kicker">MOOD DISTRIBUTION</p><h2>Last 30 days</h2></div></div><div class="mood-list">
-                        <?php $totalMoods = max(1, array_sum($wellness['moods'])); foreach ($wellness['moods'] as $mood => $count): ?><div><span><?= escape($moodLabels[$mood]) ?></span><b><i style="width: <?= round($count / $totalMoods * 100) ?>%"></i></b><strong><?= (int) $count ?></strong></div><?php endforeach; ?>
+                        <?php $totalMoods = max(1, array_sum($wellness['moods'])); foreach ($wellness['moods'] as $mood => $count): ?><div><span><?= escape($moodLabels[$mood] ?? ucwords(str_replace('_', ' ', (string) $mood))) ?></span><b><i style="width: <?= round($count / $totalMoods * 100) ?>%"></i></b><strong><?= (int) $count ?></strong></div><?php endforeach; ?>
                     </div></section>
                 </div>
                 <section class="student-panel glass-surface"><div class="panel-title"><div><p class="section-kicker">30-DAY VIEW</p><h2>Wellness activity</h2></div></div><div class="month-trend"><?php foreach ($wellness['trend30'] as $point): ?><span title="<?= escape($point['date']) ?>: <?= $point['score'] ?? 'No check-in' ?>" style="height: <?= $point['score'] === null ? 8 : max(12, (int) $point['score']) ?>%" class="<?= $point['score'] === null ? 'empty' : '' ?>"></span><?php endforeach; ?></div></section>

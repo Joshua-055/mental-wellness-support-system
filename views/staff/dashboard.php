@@ -166,11 +166,10 @@ $initial = escape(strtoupper(substr(trim((string) ($currentUser['full_name'] ?? 
                 </div>
             </div>
             <div class="action-grid"><a href="<?= BASE_URL ?>/staff/index.php?page=resources" class="quick-action primary-action"><span>＋</span><b>Add
-                        resource</b><small>Share useful support</small></a><a href="support-request.php"
+                        resource</b><small>Share useful support</small></a><a href="<?= BASE_URL ?>/staff/index.php?page=supportRequest"
                     class="quick-action"><span>◎</span><b>Assign case</b><small>Route it to a colleague</small></a><a
-                    href="appointments.php" class="quick-action"><span>□</span><b>Schedule appointment</b><small>Create
-                        a new session</small></a><a href="#" class="quick-action"><span>⌁</span><b>Generate
-                        report</b><small>Review wellbeing trends</small></a></div>
+                    href="<?= BASE_URL ?>/staff/index.php?page=appointment" class="quick-action"><span>□</span><b>Schedule appointment</b><small>Create
+                        a new session</small></a></div>
         </section>
     </section>
 </main>

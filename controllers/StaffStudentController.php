@@ -47,10 +47,14 @@ final class StaffStudentController extends Controller
     {
         $moods = ['excellent' => 0, 'good' => 0, 'neutral' => 0, 'stressed' => 0, 'overwhelmed' => 0];
         $byDate = [];
-        foreach ($checkins as $checkin) {
-            $moods[$checkin['mood']] = ($moods[$checkin['mood']] ?? 0) + 1;
+        foreach ($checkins as &$checkin) {
+            $checkin['mood'] = WellnessCheckin::normalizeMood((string) $checkin['mood']);
+            if (isset($moods[$checkin['mood']])) {
+                $moods[$checkin['mood']]++;
+            }
             $byDate[substr($checkin['created_at'], 0, 10)] = WellnessCheckin::scoreForMood($checkin['mood']);
         }
+        unset($checkin);
         $today = new DateTimeImmutable('today');
         $trend = static function (int $days) use ($today, $byDate): array {
             $rows = [];

@@ -21,6 +21,12 @@ final class WellnessCheckin
         'overwhelmed' => 5,
     ];
 
+    private const LEGACY_MOOD_ALIASES = [
+        'very_good' => 'excellent',
+        'low' => 'stressed',
+        'very_low' => 'overwhelmed',
+    ];
+
     public function create(int $userId, string $mood, string $comment): bool
     {
         if (!isset(self::MOOD_SCORES[$mood])) {
@@ -77,6 +83,11 @@ final class WellnessCheckin
         $checkins = $statement->get_result()->fetch_all(MYSQLI_ASSOC);
         $statement->close();
 
+        foreach ($checkins as &$checkin) {
+            $checkin['mood'] = self::normalizeMood((string) $checkin['mood']);
+        }
+        unset($checkin);
+
         return $checkins;
     }
 
@@ -98,7 +109,12 @@ final class WellnessCheckin
 
     public static function scoreForMood(string $mood): int
     {
-        return self::MOOD_SCORES[$mood] ?? 0;
+        return self::MOOD_SCORES[self::normalizeMood($mood)] ?? 0;
+    }
+
+    public static function normalizeMood(string $mood): string
+    {
+        return self::LEGACY_MOOD_ALIASES[$mood] ?? $mood;
     }
 
     private function defaultCategoryId(): int

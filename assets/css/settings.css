@@ -2,6 +2,16 @@
     overflow: visible;
 }
 
+.settings-app .staff-space-label {
+    margin: 42px 11px 10px;
+    color: #98a5b6;
+    font-family: inherit;
+    font-size: 9px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: .12em;
+}
+
 .settings-content {
     padding-bottom: 70px;
 }

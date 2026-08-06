@@ -33,13 +33,18 @@
                         <label for="password">New password</label>
                         <div class="input-wrap">
                             <input id="password" name="password" type="password" autocomplete="new-password" minlength="8" placeholder="At least 8 characters" required>
-                            <button class="password-toggle" type="button" aria-label="Show password" aria-pressed="false">View</button>
+                            <button class="password-toggle" type="button" aria-label="Show password" aria-pressed="false">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"/><circle cx="12" cy="12" r="2.5"/></svg>
+                            </button>
                         </div>
                     </div>
                     <div class="field-group">
                         <label for="confirm_password">Confirm new password</label>
                         <div class="input-wrap">
                             <input id="confirm_password" name="confirm_password" type="password" autocomplete="new-password" minlength="8" placeholder="Repeat your new password" required>
+                            <button class="password-toggle" type="button" aria-label="Show password" aria-pressed="false">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"/><circle cx="12" cy="12" r="2.5"/></svg>
+                            </button>
                         </div>
                     </div>
                     <button class="sign-in-button" type="submit"><span>Update password</span><span aria-hidden="true">→</span></button>
