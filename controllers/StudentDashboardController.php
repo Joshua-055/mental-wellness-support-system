@@ -7,11 +7,13 @@ final class StudentDashboardController extends Controller
     {
         $currentUser = requireRole('student');
 
-        // Future: fetch the signed-in student's data through models here.
+        $dashboard = (new Dashboard())->student((int) $currentUser['id']);
+
         $this->render('student/dashboard', [
             'pageTitle' => 'Dashboard | Mindful',
             'pageStyles' => ['student-dashboard'],
             'currentUser' => $currentUser,
+            'dashboard' => $dashboard,
         ]);
     }
 }

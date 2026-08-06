@@ -791,6 +791,13 @@
     font-size: 10px
 }
 
+.dashboard-empty {
+    margin: 22px 0;
+    color: var(--muted, #7b8ba0);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
 .support-card {
     grid-column: 2;
     grid-row: 2

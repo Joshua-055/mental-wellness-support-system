@@ -46,4 +46,5 @@ require_once APP_ROOT . '/models/StaffStudent.php';
 require_once APP_ROOT . '/controllers/staffAppointmentController.php';
 require_once APP_ROOT . '/controllers/staffSupportRequestController.php';
 require_once APP_ROOT . '/models/Resources.php';
+require_once APP_ROOT . '/models/Dashboard.php';
 require_once APP_ROOT . '/controllers/StaffStudentController.php';

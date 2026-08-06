@@ -516,7 +516,8 @@
     height: 100%
 }
 
-.mini-chart path {
+.mini-chart path,
+.mini-chart polyline {
     fill: none;
     stroke: #5ac8fa;
     stroke-width: 3;
@@ -602,6 +603,13 @@
 .workflow-note span {
     color: #007aff;
     margin-right: 4px
+}
+
+.dashboard-empty {
+    margin: 20px 0;
+    color: #7d8da1;
+    font-size: 12px;
+    line-height: 1.6;
 }
 
 .followup-grid {
