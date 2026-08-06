@@ -54,7 +54,7 @@ $settingsUrl = BASE_URL . ($isStaffNavigation ? '/staff/index.php?page=settings'
             >
                 <span class="nav-icon" aria-hidden="true"><?= $item['icon'] ?></span>
                 <?= escape($item['label']) ?>
-                <?php if (isset($item['badge']) && (int) $item['badge'] > 0): ?>
+                <?php if (isset($item['badge']) && (int) $item['badge'] >= 0): ?>
                     <b class="side-count"><?= (int) $item['badge'] ?></b>
                 <?php endif; ?>
             </a>
