@@ -2,6 +2,14 @@
 $displayName = escape((string) ($currentUser['full_name'] ?? 'Student'));
 $firstName = escape(explode(' ', trim((string) ($currentUser['full_name'] ?? 'Student')))[0]);
 $initial = escape(strtoupper(substr(trim((string) ($currentUser['full_name'] ?? 'S')), 0, 1)));
+$moods = [
+    ['excellent', '😊', 'Excellent', 'Feeling great'],
+    ['good', '🙂', 'Good', 'Feeling steady'],
+    ['neutral', '😐', 'Neutral', 'Taking it easy'],
+    ['stressed', '😔', 'Stressed', 'Feeling tense'],
+    ['overwhelmed', '😢', 'Overwhelmed', 'Need a pause'],
+];
+$initialMood = (string) ($initialMood ?? '');
 ?>
 <main class="student-app wellness-app">
     <div class="dashboard-glow glow-one" aria-hidden="true"></div><div class="dashboard-glow glow-two" aria-hidden="true"></div>
@@ -9,8 +17,21 @@ $initial = escape(strtoupper(substr(trim((string) ($currentUser['full_name'] ?? 
     <section class="dashboard-content">
         <?php $topbarTitle = 'Wellness Check-In'; require APP_ROOT . '/views/layouts/dashboard-topbar.php'; ?>
         <section class="wellness-heading" aria-labelledby="checkin-title"><div><p class="section-kicker">A MOMENT FOR YOU</p><h1 id="checkin-title">How are you feeling, <?= $firstName ?>?</h1><p>There is no right answer. Take a quiet moment to notice where you are today.</p></div></section>
-        <form class="checkin-layout" id="wellnessCheckin" method="post" action="index.php?page=checkin_save"><input type="hidden" name="csrf_token" value="<?= escape(csrfToken()) ?>"><input type="hidden" name="mood" id="selectedMood" value="neutral">
-            <section class="checkin-main glass-surface"><div class="checkin-section-title"><div><h2>Choose your mood</h2><p>Which word feels closest right now?</p></div></div><div class="checkin-moods" role="radiogroup" aria-label="Mood"><button type="button" class="checkin-mood" data-mood="very_good" aria-pressed="false"><span>😊</span><strong>Great</strong><small>Feeling bright</small></button><button type="button" class="checkin-mood" data-mood="good" aria-pressed="false"><span>🙂</span><strong>Good</strong><small>Feeling steady</small></button><button type="button" class="checkin-mood selected" data-mood="neutral" aria-pressed="true"><span>😐</span><strong>Okay</strong><small>Taking it easy</small></button><button type="button" class="checkin-mood" data-mood="low" aria-pressed="false"><span>😔</span><strong>Low</strong><small>A little heavy</small></button><button type="button" class="checkin-mood" data-mood="very_low" aria-pressed="false"><span>😣</span><strong>Struggling</strong><small>Need some care</small></button></div><div class="checkin-divider"></div><div class="checkin-section-title"><div><h2>Anything on your mind?</h2><p>Optional — only share what feels comfortable.</p></div></div><label class="reflection-box" for="reflection"><span>✦</span><textarea id="reflection" name="comment" maxlength="280" placeholder="A few words about your day…"></textarea><small><b id="characterCount">0</b> / 280</small></label><div class="checkin-actions"><button class="submit-checkin" type="submit"<?= !empty($hasCheckinToday) ? ' disabled aria-disabled="true"' : '' ?>><?= !empty($hasCheckinToday) ? 'Today\'s check-in completed' : 'Complete check-in' ?> <span>→</span></button></div><?php if (!empty($errorMessage)): ?><p class="submit-message error-message" role="alert"><?= escape($errorMessage) ?></p><?php endif; ?></section>
+        <form class="checkin-layout" id="wellnessCheckin" method="post" action="index.php?page=checkin_save">
+            <input type="hidden" name="csrf_token" value="<?= escape(csrfToken()) ?>"><input type="hidden" name="mood" id="selectedMood" value="<?= escape($initialMood) ?>">
+            <section class="checkin-main glass-surface">
+                <div class="checkin-section-title"><div><h2>Choose your mood</h2><p>Which word feels closest right now?</p></div></div>
+                <div class="checkin-moods" role="radiogroup" aria-label="Mood">
+                    <?php foreach ($moods as [$value, $emoji, $label, $description]): ?>
+                        <button type="button" class="checkin-mood<?= $initialMood === $value ? ' selected' : '' ?>" data-mood="<?= escape($value) ?>" aria-pressed="<?= $initialMood === $value ? 'true' : 'false' ?>"><span><?= $emoji ?></span><strong><?= escape($label) ?></strong><small><?= escape($description) ?></small></button>
+                    <?php endforeach; ?>
+                </div>
+                <div class="checkin-divider"></div>
+                <div class="checkin-section-title"><div><h2>Anything on your mind?</h2><p>Optional — only share what feels comfortable.</p></div></div>
+                <label class="reflection-box" for="reflection"><span>✦</span><textarea id="reflection" name="comment" maxlength="280" placeholder="A few words about your day…"></textarea><small><b id="characterCount">0</b> / 280</small></label>
+                <div class="checkin-actions"><button class="submit-checkin" type="submit"<?= !empty($hasCheckinToday) ? ' disabled aria-disabled="true"' : '' ?>><?= !empty($hasCheckinToday) ? 'Today\'s check-in completed' : 'Complete check-in' ?> <span>→</span></button></div>
+                <?php if (!empty($errorMessage)): ?><p class="submit-message error-message" role="alert"><?= escape($errorMessage) ?></p><?php endif; ?>
+            </section>
             <aside class="checkin-aside"><article class="today-card glass-surface"><div class="today-card-top"><span class="mini-icon">☀</span><span><?= date('l, j F') ?></span></div><h2>Your small win</h2><p>Taking time to check in with yourself is a meaningful act of care.</p></article><a class="support-link glass-surface" href="index.php?page=support_request"><span>♡</span><div><strong>Need a little more support?</strong><small>We are here when you are ready.</small></div><b>→</b></a></aside>
         </form>
     </section>

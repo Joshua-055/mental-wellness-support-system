@@ -75,14 +75,15 @@ $initial = escape(strtoupper(substr(trim((string) ($currentUser['full_name'] ?? 
                                         <span class="minimal-status status-dot-<?= $status ?>">
                                             <?= htmlspecialchars($status) ?>
                                         </span>
+                                        <small class="request-time">Created <?= htmlspecialchars(date('d M Y, h:i A', strtotime($req['created_at']))) ?></small>
+                                        <?php if (in_array($status, ['resolved', 'closed'], true)): ?><small class="request-time completed-time">Completed <?= htmlspecialchars(date('d M Y, h:i A', strtotime($req['updated_at']))) ?></small><?php endif; ?>
                                     </td>
 
                                     <!-- Assigned Staff ID & Action (Take Case 按钮) -->
                                     <td class="td-remark-action">
                                         <div class="action-wrapper">
                                             <?php if (!empty($req['assigned_staff_id'])): ?>
-                                                <span
-                                                    class="staff-id-text">#<?= htmlspecialchars($req['assigned_staff_id']) ?></span>
+                                                <span class="staff-id-text"><?= htmlspecialchars($req['assigned_staff_name'] ?? 'Assigned staff') ?></span>
                                             <?php else: ?>
                                                 <span class="text-muted" style="margin-bottom: 8px; display: block;">NULL</span>
                                             <?php endif; ?>
@@ -93,6 +94,9 @@ $initial = escape(strtoupper(substr(trim((string) ($currentUser['full_name'] ?? 
                                                     onclick="takeSupportCase(<?= $req['id'] ?>)">
                                                     Take Case
                                                 </button>
+                                            <?php endif; ?>
+                                            <?php if ((int) ($req['assigned_staff_id'] ?? 0) === (int) $currentUser['id'] && !in_array($status, ['resolved', 'closed'], true)): ?>
+                                                <button type="button" class="btn-complete" onclick="completeSupportCase(event, <?= (int) $req['id'] ?>)">Complete</button>
                                             <?php endif; ?>
                                         </div>
                                     </td>
@@ -136,6 +140,26 @@ $initial = escape(strtoupper(substr(trim((string) ($currentUser['full_name'] ?? 
             .catch(err => {
                 console.error(err);
                 btn.innerText = "Take Case";
+                btn.disabled = false;
+            });
+    }
+
+    function completeSupportCase(event, requestId) {
+        const btn = event.currentTarget;
+        btn.innerText = 'Completing...';
+        btn.disabled = true;
+        const formData = new FormData();
+        formData.append('request_id', requestId);
+        formData.append('csrf_token', '<?= escape(csrfToken()) ?>');
+        fetch('index.php?page=support_request_complete', { method: 'POST', body: formData })
+            .then(async response => ({ ok: response.ok, data: await response.json() }))
+            .then(({ ok, data }) => {
+                if (ok && data.success) window.location.reload();
+                else throw new Error(data.message || 'Unable to complete this request.');
+            })
+            .catch(error => {
+                alert(error.message);
+                btn.innerText = 'Complete';
                 btn.disabled = false;
             });
     }

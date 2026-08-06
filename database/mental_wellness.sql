@@ -129,7 +129,7 @@ CREATE TABLE `wellness_checkins` (
   `id` int(10) UNSIGNED NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
   `category_id` smallint(5) UNSIGNED NOT NULL,
-  `mood` enum('very_good','good','neutral','low','very_low') NOT NULL,
+  `mood` enum('excellent','good','neutral','stressed','overwhelmed') NOT NULL,
   `stress_level` tinyint(4) NOT NULL,
   `COMMENT` text DEFAULT NULL,
   `needs_follow_up` tinyint(1) DEFAULT 0,

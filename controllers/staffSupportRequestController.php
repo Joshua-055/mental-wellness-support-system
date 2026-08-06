@@ -73,4 +73,24 @@ final class StaffSupportRequestController extends Controller
         exit;
     }
 }
+
+    public function completeCase(): void
+    {
+        requireRole('staff');
+        header('Content-Type: application/json; charset=utf-8');
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !hasValidCsrfToken($_POST['csrf_token'] ?? null)) {
+            http_response_code(403);
+            echo json_encode(['success' => false, 'message' => 'The request could not be verified.']);
+            exit;
+        }
+
+        $requestId = (int) ($_POST['request_id'] ?? 0);
+        $completed = $requestId > 0
+            && (new SupportRequest())->completeByAssignedStaff($requestId, (int) $_SESSION['user']['id']);
+        if (!$completed) {
+            http_response_code(409);
+        }
+        echo json_encode(['success' => $completed, 'message' => $completed ? null : 'Only the assigned staff can complete an active request.']);
+        exit;
+    }
 }
