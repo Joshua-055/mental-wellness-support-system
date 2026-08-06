@@ -321,6 +321,19 @@
 }
 
 /* 2. 现代风格表格及表头吸顶 */
+.appointments-history-section {
+    margin-top: 50px;
+    padding: 0 10px;
+}
+
+.section-title {
+    margin: 0 0 18px;
+    padding-left: 4px;
+    color: #1a2535;
+    font-size: 16px;
+    font-weight: 700;
+}
+
 .modern-table {
     width: 100%;
     border-collapse: collapse;
@@ -333,7 +346,7 @@
     top: 0;
     z-index: 10;
     padding: 18px 24px;
-    font-size: 13px;
+    font-size: 12px;
     color: #64748b;
     font-weight: 600;
     border-bottom: 2px solid rgba(226, 232, 240, 0.6);
@@ -343,7 +356,7 @@
 
 .modern-table td {
     padding: 20px 24px;
-    font-size: 14px;
+    font-size: 13px;
     color: #334155;
     border-bottom: 1px solid rgba(226, 232, 240, 0.6);
     vertical-align: top;
@@ -357,7 +370,7 @@
 /* 3. 单元格内部微调 */
 .td-student strong { 
     color: #0f172a; 
-    font-size: 15px; 
+    font-size: 14px;
 }
 
 .subject-title { 
@@ -368,7 +381,7 @@
 
 .details-text { 
     color: #64748b; 
-    font-size: 13px; 
+    font-size: 12px;
 }
 
 /* 4. 优先级标签样式 (Priority Badge) */
@@ -429,6 +442,22 @@
     transform: translateY(-1px);
     box-shadow: 0 4px 10px rgba(0, 122, 255, 0.3);
 }
+
+.btn-complete {
+    margin-top: 7px;
+    padding: 6px 14px;
+    border: 0;
+    border-radius: 8px;
+    background: #22a06b;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.btn-complete:hover { background: #168557; }
+.btn-complete:disabled { cursor: wait; opacity: .65; }
+.request-time{display:block;margin-top:7px;color:#8290a3;font-size:10px;white-space:nowrap}.completed-time{color:#23865e;font-weight:700}
 
 .empty-state { 
     text-align: center; 

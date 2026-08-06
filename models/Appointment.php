@@ -78,9 +78,11 @@ final class Appointment
             'SELECT 
                 a.*, 
                 u.full_name AS student_name,
+                staff.full_name AS staff_name,
                 sr.description AS support_description
              FROM appointments a
              LEFT JOIN users u ON a.user_id = u.id
+             LEFT JOIN users staff ON a.staff_id = staff.id
              LEFT JOIN support_requests sr ON a.support_request_id = sr.id
              ORDER BY a.created_at DESC'
         );

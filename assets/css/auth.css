@@ -88,11 +88,20 @@
 }
 
 .password-reset-shell {
+    grid-template-columns: minmax(0, 500px);
     justify-content: center;
+    justify-items: center;
 }
 
 .password-reset-shell .login-card {
     width: min(100%, 500px);
+    justify-self: center;
+    margin-inline: auto;
+}
+
+.password-reset-shell .card-heading,
+.password-reset-shell .overline {
+    text-align: center;
 }
 
 .reset-guidance {
@@ -129,7 +138,7 @@
     display: grid;
     width: 48px;
     height: 48px;
-    margin-bottom: 18px;
+    margin: 0 auto 18px;
     place-items: center;
     border-radius: 16px;
     background: rgba(52, 199, 89, .12);

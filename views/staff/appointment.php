@@ -81,7 +81,7 @@ $initial = escape(strtoupper(substr(trim((string) ($currentUser['full_name'] ?? 
                                     <!-- Staff ID -->
                                     <td class="td-staff-id">
                                         <?php if (!empty($appointment['staff_id'])): ?>
-                                            <span style="font-weight: 600;">#<?= htmlspecialchars($appointment['staff_id']) ?></span>
+                                            <span style="font-weight: 600;"><?= htmlspecialchars($appointment['staff_name'] ?? 'Assigned staff') ?></span>
                                         <?php else: ?>
                                             <span class="text-muted" style="font-style: italic;">NULL</span>
                                         <?php endif; ?>

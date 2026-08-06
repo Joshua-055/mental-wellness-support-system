@@ -21,9 +21,8 @@ $staffItems = [
     ['key' => 'dashboard', 'icon' => '⌂', 'label' => 'Dashboard', 'url' => BASE_URL . '/staff/'],
     ['key' => 'supportRequest', 'icon' => '◎', 'label' => 'Support Requests', 'url' => BASE_URL . '/staff/index.php?page=supportRequest', 'badge' => $unassignedRequestsCount ?? null],
     ['key' => 'appointment', 'icon' => '□', 'label' => 'Appointments', 'url' => BASE_URL . '/staff/index.php?page=appointment', 'badge' => $unassignedAppointmentsCount ?? null],
-    ['key' => 'students', 'icon' => '◉', 'label' => 'Students', 'url' => null],
+    ['key' => 'students', 'icon' => '◉', 'label' => 'Students', 'url' => BASE_URL . '/staff/index.php?page=students'],
     ['key' => 'resources', 'icon' => '▤', 'label' => 'Resources', 'url' => BASE_URL . '/staff/index.php?page=resources'],
-    ['key' => 'reports', 'icon' => '⌁', 'label' => 'Reports', 'url' => null],
 ];
 
 $navigationItems = $isStaffNavigation ? $staffItems : $studentItems;
@@ -54,7 +53,7 @@ $settingsUrl = BASE_URL . ($isStaffNavigation ? '/staff/index.php?page=settings'
             >
                 <span class="nav-icon" aria-hidden="true"><?= $item['icon'] ?></span>
                 <?= escape($item['label']) ?>
-                <?php if (isset($item['badge']) && (int) $item['badge'] > 0): ?>
+                <?php if (isset($item['badge']) && (int) $item['badge'] >= 0): ?>
                     <b class="side-count"><?= (int) $item['badge'] ?></b>
                 <?php endif; ?>
             </a>

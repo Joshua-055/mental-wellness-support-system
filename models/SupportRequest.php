@@ -69,9 +69,10 @@ final class SupportRequest
     public function getAllRequests(): array
     {
         $statement = Database::connection()->prepare(
-            'SELECT sr.*, u.full_name AS student_name 
+            'SELECT sr.*, u.full_name AS student_name, staff.full_name AS assigned_staff_name
          FROM support_requests sr
          LEFT JOIN users u ON sr.user_id = u.id
+         LEFT JOIN users staff ON sr.assigned_staff_id = staff.id
          ORDER BY sr.created_at DESC'
         );
         $statement->execute();
@@ -90,7 +91,7 @@ final class SupportRequest
         $statement = Database::connection()->prepare(
             "UPDATE support_requests 
              SET assigned_staff_id = ?, STATUS = 'under_review', updated_at = NOW() 
-             WHERE id = ?"
+             WHERE id = ? AND (assigned_staff_id IS NULL OR assigned_staff_id = 0)"
         );
 
         $statement->bind_param('ii', $staffId, $requestId);
@@ -109,5 +110,18 @@ final class SupportRequest
         $result = $statement->get_result()->fetch_assoc();
         $statement->close();
         return (int) ($result['total'] ?? 0);
+    }
+
+    public function completeByAssignedStaff(int $requestId, int $staffId): bool
+    {
+        $statement = Database::connection()->prepare(
+            "UPDATE support_requests SET STATUS = 'resolved', updated_at = NOW()
+             WHERE id = ? AND assigned_staff_id = ? AND STATUS NOT IN ('resolved', 'closed')"
+        );
+        $statement->bind_param('ii', $requestId, $staffId);
+        $statement->execute();
+        $completed = $statement->affected_rows === 1;
+        $statement->close();
+        return $completed;
     }
 }

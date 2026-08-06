@@ -56,6 +56,7 @@ $statusClass = strtolower(str_replace(' ', '-', $request['STATUS']));
                     <div style="text-align: right;">
                         <span style="font-size: 13px; color: #888;">Submitted On</span><br>
                         <strong><?= date('d M Y, h:i A', strtotime($request['created_at'])) ?></strong>
+                        <?php if (in_array($request['STATUS'], ['resolved', 'closed'], true)): ?><br><span style="font-size: 13px; color: #888;">Completed On</span><br><strong><?= date('d M Y, h:i A', strtotime($request['updated_at'])) ?></strong><?php endif; ?>
                     </div>
                 </div>
 

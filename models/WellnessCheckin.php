@@ -6,19 +6,25 @@ final class WellnessCheckin
     private const DAILY_LIMIT_MESSAGE = 'You have already completed today\'s wellness check-in. You can check in again tomorrow.';
 
     private const MOOD_SCORES = [
-        'very_good' => 100,
+        'excellent' => 100,
         'good' => 82,
         'neutral' => 70,
-        'low' => 58,
-        'very_low' => 42,
+        'stressed' => 58,
+        'overwhelmed' => 42,
     ];
 
     private const STRESS_LEVELS = [
-        'very_good' => 1,
+        'excellent' => 1,
         'good' => 2,
         'neutral' => 3,
-        'low' => 4,
-        'very_low' => 5,
+        'stressed' => 4,
+        'overwhelmed' => 5,
+    ];
+
+    private const LEGACY_MOOD_ALIASES = [
+        'very_good' => 'excellent',
+        'low' => 'stressed',
+        'very_low' => 'overwhelmed',
     ];
 
     public function create(int $userId, string $mood, string $comment): bool
@@ -40,7 +46,7 @@ final class WellnessCheckin
 
             $categoryId = $this->defaultCategoryId();
             $stressLevel = self::STRESS_LEVELS[$mood];
-            $needsFollowUp = $mood === 'very_low' ? 1 : 0;
+            $needsFollowUp = $mood === 'overwhelmed' ? 1 : 0;
             $statement = $database->prepare(
                 'INSERT INTO wellness_checkins (user_id, category_id, mood, stress_level, COMMENT, needs_follow_up) VALUES (?, ?, ?, ?, ?, ?)'
             );
@@ -77,6 +83,11 @@ final class WellnessCheckin
         $checkins = $statement->get_result()->fetch_all(MYSQLI_ASSOC);
         $statement->close();
 
+        foreach ($checkins as &$checkin) {
+            $checkin['mood'] = self::normalizeMood((string) $checkin['mood']);
+        }
+        unset($checkin);
+
         return $checkins;
     }
 
@@ -98,7 +109,12 @@ final class WellnessCheckin
 
     public static function scoreForMood(string $mood): int
     {
-        return self::MOOD_SCORES[$mood] ?? 0;
+        return self::MOOD_SCORES[self::normalizeMood($mood)] ?? 0;
+    }
+
+    public static function normalizeMood(string $mood): string
+    {
+        return self::LEGACY_MOOD_ALIASES[$mood] ?? $mood;
     }
 
     private function defaultCategoryId(): int
