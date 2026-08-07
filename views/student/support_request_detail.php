@@ -2,7 +2,7 @@
 $displayName = escape((string) ($currentUser['full_name'] ?? 'Student'));
 $initial = escape(strtoupper(substr(trim((string) ($currentUser['full_name'] ?? 'S')), 0, 1)));
 
-// 因为存进数据库时，我们把 Subject 和 Details 拼在一起了，现在要把它们拆开显示
+// 拆分 Subject 和 Details
 $fullDescription = $request['description'] ?? '';
 $subject = 'Support Request';
 $details = $fullDescription;
@@ -30,44 +30,44 @@ $statusClass = strtolower(str_replace(' ', '-', $request['STATUS']));
             <div class="support-header">
                 <div>
                     <!-- 返回按钮 -->
-                    <a href="index.php?page=support_request"
-                        style="color: #666; text-decoration: none; font-size: 14px;">
+                    <a href="index.php?page=support_request" class="detail-back-btn">
                         ← Back to Requests
                     </a>
-                    <h1 style="margin-top: 10px;">Request #<?= htmlspecialchars((string) $request['id']) ?></h1>
+                    <h1 class="detail-page-title">Request #<?= htmlspecialchars((string) $request['id']) ?></h1>
                 </div>
             </div>
 
-            <div class="request-section"
-                style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-                <!-- 状态与分类 -->
-                <div
-                    style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 15px;">
-                    <div>
-                        <span style="font-size: 13px; color: #888;">Category</span><br>
-                        <strong><?= htmlspecialchars($request['category_name'] ?? 'Uncategorized') ?></strong>
+            <!-- 主卡片容器 -->
+            <div class="request-detail-card">
+                <!-- 顶部元数据栏 -->
+                <div class="detail-meta-grid">
+                    <div class="meta-item">
+                        <span class="meta-label">Category</span>
+                        <div class="meta-value"><?= htmlspecialchars($request['category_name'] ?? 'Uncategorized') ?></div>
                     </div>
-                    <div>
-                        <span style="font-size: 13px; color: #888;">Status</span><br>
-                        <span class="status <?= $statusClass ?>">
-                            ● <?= htmlspecialchars($request['STATUS']) ?>
-                        </span>
+                    <div class="meta-item">
+                        <span class="meta-label">Status</span>
+                        <div class="meta-value">
+                            <span class="status-badge status-<?= $statusClass ?>">
+                                ● <?= htmlspecialchars($request['STATUS']) ?>
+                            </span>
+                        </div>
                     </div>
-                    <div style="text-align: right;">
-                        <span style="font-size: 13px; color: #888;">Submitted On</span><br>
-                        <strong><?= date('d M Y, h:i A', strtotime($request['created_at'])) ?></strong>
-                        <?php if (in_array($request['STATUS'], ['resolved', 'closed'], true)): ?><br><span style="font-size: 13px; color: #888;">Completed On</span><br><strong><?= date('d M Y, h:i A', strtotime($request['updated_at'])) ?></strong><?php endif; ?>
+                    <div class="meta-item text-right">
+                        <span class="meta-label">Submitted On</span>
+                        <div class="meta-value"><?= date('d M Y, h:i A', strtotime($request['created_at'])) ?></div>
+                        <?php if (in_array($request['STATUS'], ['resolved', 'closed'], true)): ?>
+                            <span class="meta-label" style="margin-top: 6px;">Completed On</span>
+                            <div class="meta-value"><?= date('d M Y, h:i A', strtotime($request['updated_at'])) ?></div>
+                        <?php endif; ?>
                     </div>
                 </div>
 
-                <!-- 标题与详情 -->
-                <div style="margin-top: 20px;">
-                    <h3 style="color: #333; margin-bottom: 15px; font-size: 20px;">
-                        <?= htmlspecialchars($subject) ?>
-                    </h3>
+                <!-- 核心内容区 -->
+                <div class="detail-main-content">
+                    <h3 class="detail-subject-heading"><?= htmlspecialchars($subject) ?></h3>
 
-                    <div
-                        style="background: #f9fafb; padding: 20px; border-radius: 8px; font-size: 15px; color: #444; line-height: 1.6; white-space: pre-wrap;">
+                    <div class="detail-description-box">
                         <?= htmlspecialchars($details) ?>
                     </div>
                 </div>

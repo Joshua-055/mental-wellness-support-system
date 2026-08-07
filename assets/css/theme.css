@@ -739,3 +739,129 @@
 :root[data-theme="dark"] .resource-description {
     color:#9eacbe;
 }
+
+/* ==========================================
+   Support Request Detail 专属重置样式
+   ========================================== */
+
+.detail-back-btn {
+    color: #8490a2 !important;
+    text-decoration: none;
+    font-size: 14px;
+    display: inline-block;
+    margin-bottom: 8px;
+    transition: color 0.2s;
+}
+
+.detail-back-btn:hover {
+    color: #007aff !important;
+}
+
+.detail-page-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 20px 0;
+}
+
+/* 1. 主卡片定义（白天模式） */
+.request-detail-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    border: 1px solid #edf2f7;
+}
+
+.detail-meta-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid #edf2f7;
+    padding-bottom: 20px;
+    margin-bottom: 24px;
+}
+
+.meta-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #8490a2 !important;
+    margin-bottom: 4px;
+}
+
+.meta-value {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1e293b !important;
+}
+
+/* 2. 状态标签（针对 submitted 状态做对比度处理） */
+.status-badge {
+    font-size: 14px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.status-submitted, .status-pending { color: #f59e0b !important; } /* 亮黄色 */
+.status-in-progress { color: #007aff !important; }
+.status-resolved, .status-approved { color: #10b981 !important; }
+.status-rejected, .status-closed { color: #ef4444 !important; }
+
+/* 3. 核心标题与文本框 */
+.detail-subject-heading {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0f172a !important;
+    margin: 0 0 16px 0;
+}
+
+.detail-description-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+    font-size: 15px;
+    color: #334155 !important;
+    line-height: 1.6;
+    white-space: pre-wrap;
+}
+
+/* ==========================================
+   🌙 强制暗黑模式适配 (Dark Mode Explicit Overrides)
+   ========================================== */
+
+body.dark-mode .detail-page-title {
+    color: #f8fafc !important;
+}
+
+/* 核心：暗黑模式下卡片变深 */
+body.dark-mode .request-detail-card {
+    background: #172033 !important; /* 优雅极深蓝 */
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+}
+
+body.dark-mode .detail-meta-grid {
+    border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.dark-mode .meta-label {
+    color: #94a3b8 !important; /* 浅灰标题 */
+}
+
+body.dark-mode .meta-value,
+body.dark-mode .detail-subject-heading {
+    color: #ffffff !important; /* 纯白核心大字 */
+}
+
+body.dark-mode .detail-description-box {
+    background: rgba(15, 23, 42, 0.6) !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    color: #cbd5e1 !important; /* 内容灰白 */
+}
+
+body.dark-mode .detail-back-btn {
+    color: #38bdf8 !important;
+}
