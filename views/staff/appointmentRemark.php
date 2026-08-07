@@ -18,7 +18,7 @@ $appointmentId = isset($_GET['appointment_id']) ? (int) $_GET['appointment_id'] 
         <div class="form-group">
             <label for="staffRemark">Staff Remark</label>
             <textarea id="staffRemark" placeholder="Please enter your follow-up remarks or notes..."></textarea>
-            <div id="remarkError" style="color: #ff3b30; font-size: 13px; margin-top: 6px; display: none;">请填写备注内容！
+            <div id="remarkError" style="color: #ff3b30; font-size: 13px; margin-top: 6px; display: none;">Please fill in the remarks.
             </div>
         </div>
 

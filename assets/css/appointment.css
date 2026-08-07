@@ -582,25 +582,50 @@
     padding-left: 4px;
 }
 
-/* 响应式表格包裹容器（防溢出） */
+/* 响应式表格包裹容器（加限制高度与滚动条） */
 .table-responsive-wrapper {
     width: 100%;
-    overflow-x: auto;
+    max-height: 480px; /* 限制最大高度，避免列表无限拉长 */
+    overflow-y: auto;  /* 纵向内容超出时显示滚动条 */
+    overflow-x: auto;  /* 横向适应小屏幕 */
     background: #ffffff;
     border-radius: 16px;
     border: 1px solid rgba(226, 232, 240, 0.8);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
 }
 
-.modern-table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: left;
-    min-width: 800px; /* 保证表格在小屏幕上能够横向滚动而不被挤压变形 */
+/* 极简精致滚动条样式 */
+.table-responsive-wrapper::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
 }
 
-/* 表头样式 */
+.table-responsive-wrapper::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.table-responsive-wrapper::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.12);
+    border-radius: 10px;
+}
+
+.table-responsive-wrapper::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.modern-table {
+    width: 100%;
+    border-collapse: separate; /* 配合 sticky 必须使用 separate */
+    border-spacing: 0;
+    text-align: left;
+    min-width: 800px;
+}
+
+/* 表头样式（加上 sticky 滚动固定） */
 .modern-table th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
     padding: 18px 24px;
     font-size: 13px;
     color: #8490a2;
@@ -620,7 +645,7 @@
     font-size: 14px;
     color: #3e5068;
     border-bottom: 1px solid #f1f5f9;
-    vertical-align: top; /* 文字靠上对齐 */
+    vertical-align: top;
     line-height: 1.6;
 }
 
@@ -661,7 +686,7 @@
 }
 
 .remark-text {
-    color: #007aff; /* 辅导员回复蓝色高亮 */
+    color: #007aff;
     font-weight: 500;
 }
 
@@ -669,7 +694,7 @@
     color: #cbd5e1;
 }
 
-/* --- 状态圆点 (还原截图风格) --- */
+/* --- 状态圆点 --- */
 .minimal-status {
     font-size: 14px;
     font-weight: 600;
