@@ -85,16 +85,14 @@ $topbarTitle = 'Resources';
             value="resources">
 
 
+        <span class="search-icon" aria-hidden="true">⌕</span>
+
         <input 
-            type="text"
+            type="search"
             name="search"
             value="<?= htmlspecialchars($_GET['search'] ?? '') ?>"
-            placeholder="Search resources...">
-
-
-        <button type="submit" class="btn btn-primary">
-            Search
-        </button>
+            placeholder="Search resources..."
+            aria-label="Search resources">
 
     </form>
 
@@ -134,11 +132,10 @@ $topbarTitle = 'Resources';
                         <?php if ($isStaff): ?>
 
 
-                            <button class="btn btn-sm btn-outline-primary" data-bs-toggle="offcanvas"
-                                data-bs-target="#editResourcePanel<?= $resource['id']; ?>">
-
-                                Edit
-
+                            <button type="button" class="resource-icon-btn edit-btn" data-bs-toggle="offcanvas"
+                                data-bs-target="#editResourcePanel<?= $resource['id']; ?>" title="Edit resource"
+                                aria-label="Edit <?= htmlspecialchars($resource['title']); ?>">
+                                ✎
                             </button>
 
 
@@ -147,10 +144,9 @@ $topbarTitle = 'Resources';
 
                                 <input type="hidden" name="id" value="<?= $resource['id']; ?>">
 
-                                <button type="submit" class="btn btn-sm btn-outline-danger">
-
-                                    Delete
-
+                                <button type="submit" class="resource-icon-btn delete-btn" title="Delete resource"
+                                    aria-label="Delete <?= htmlspecialchars($resource['title']); ?>">
+                                    🗑
                                 </button>
 
                             </form>
