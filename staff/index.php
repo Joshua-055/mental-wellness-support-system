@@ -1,0 +1,87 @@
+<?php
+
+require_once __DIR__ . '/../bootstrap.php';
+
+$page = $_GET['page'] ?? 'dashboard';
+
+switch ($page) {
+
+    case 'dashboard':
+        (new StaffDashboardController())->index();
+        break;
+
+    case 'appointment':
+        (new staffAppointmentController())->index();
+        break;
+
+    case 'supportRequest':
+        (new StaffSupportRequestController())->index();
+        break;
+
+    case 'students':
+        (new StaffStudentController())->index();
+        break;
+
+    case 'student_detail':
+        (new StaffStudentController())->show();
+        break;
+
+    case 'appointmentRemark':
+        (new staffAppointmentController())->create();
+        break;
+
+    case 'appointment_staff_remark':
+        (new staffAppointmentController())->create();
+        break;
+
+    case 'appointment_take':
+        (new staffAppointmentController())->take();
+        break;
+
+    case 'appointment_take_save':
+        (new staffAppointmentController())->takeSave();
+        break;
+
+    case 'support_request_take':
+        (new StaffSupportRequestController())->takeCase();
+        break;
+
+    case 'support_request_complete':
+        (new StaffSupportRequestController())->completeCase();
+        break;
+
+    case 'settings':
+        (new SettingsController())->staff();
+        break;
+
+    case 'resources':
+
+        $action = $_GET['action'] ?? '';
+
+        $controller = new ResourcesController();
+
+        switch ($action) {
+
+            case 'store':
+                $controller->store();
+                break;
+
+            case 'update':
+                $controller->update();
+                break;
+
+            case 'delete':
+                $controller->delete();
+                break;
+
+            default:
+                $controller->staff();
+                break;
+        }
+
+        break;
+
+    default:
+        echo "404 Page Not Found";
+
+}

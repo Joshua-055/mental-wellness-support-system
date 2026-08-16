@@ -1,0 +1,17 @@
+<?php
+
+$host = '127.0.0.1';
+$port = 3306;
+$database = 'mental_wellness_db';
+$username = 'root';
+$password = '';
+
+$conn = new mysqli(
+    $host,
+    $username,
+    $password,
+    $database,
+    $port
+);
+
+$conn->set_charset('utf8mb4');

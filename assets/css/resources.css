@@ -1,0 +1,499 @@
+.resources-content {
+    min-width:0;
+}
+
+.resources-grid{
+    width:100%;
+}
+
+.resource-card{
+    min-width:0;
+}
+
+/* =========================
+   Heading
+========================= */
+
+
+.resources-heading {
+
+    max-width:760px;
+
+    margin:52px 4px 25px;
+
+}
+
+
+.resources-title-row {
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    gap:30px;
+
+}
+
+
+
+.resources-heading h1 {
+
+    margin:8px 0 10px;
+
+    color:var(--ink);
+
+    font-size:clamp(34px,5vw,56px);
+
+    letter-spacing:-.055em;
+
+}
+
+
+
+.resources-heading p:last-child {
+
+    margin:0;
+
+    color:var(--muted);
+
+    font-size:15px;
+
+    line-height:1.6;
+
+}
+
+
+
+/* =========================
+   Add Button
+========================= */
+
+
+.add-resource-btn {
+
+    border-radius:18px;
+
+    padding:12px 22px;
+
+}
+
+
+
+/* =========================
+   Search
+========================= */
+
+
+.resources-search {
+
+    margin:30px 0 35px;
+
+}
+
+
+
+.resources-search input {
+
+
+    width:520px;
+
+    max-width:100%;
+
+    height:50px;
+
+
+    padding:0 20px;
+
+
+    border-radius:18px;
+
+
+    border:1px solid rgba(255,255,255,.15);
+
+
+    background:rgba(255,255,255,.08);
+
+
+    color:var(--ink);
+
+
+    backdrop-filter:blur(20px);
+
+}
+
+
+
+.resources-search input::placeholder {
+
+    color:var(--muted);
+
+}
+
+
+
+/* =========================
+   Grid
+========================= */
+
+
+.resources-grid {
+
+    display:grid;
+
+    grid-template-columns:repeat(3,minmax(0,1fr));
+
+    gap:20px;
+
+}
+
+
+
+/* =========================
+   Card
+========================= */
+
+
+.resource-card {
+
+    min-height:240px;
+
+    padding:25px;
+
+    border-radius:24px;
+
+
+    display:flex;
+
+    flex-direction:column;
+
+
+    transition:.25s ease;
+
+}
+
+
+
+.resource-card:hover {
+
+    transform:translateY(-5px);
+
+}
+
+
+
+.resource-icon {
+
+
+    width:45px;
+
+    height:45px;
+
+
+    border-radius:15px;
+
+
+    display:grid;
+
+    place-items:center;
+
+
+    background:rgba(0,122,255,.15);
+
+
+    font-size:22px;
+
+}
+
+
+
+.resource-body h3 {
+
+    margin:24px 0 8px;
+
+    color:var(--ink);
+
+    font-size:18px;
+
+}
+
+
+
+.resource-body p {
+
+    color:var(--muted);
+
+    font-size:13px;
+
+    line-height:1.55;
+
+}
+
+
+
+.resource-actions {
+
+    margin-top:auto;
+
+}
+
+
+
+.learn-more {
+
+    padding:0;
+
+    color:var(--accent);
+
+    font-weight:700;
+
+}
+
+
+
+/* =========================
+   Offcanvas
+========================= */
+
+
+.resource-panel {
+
+
+    width:420px;
+
+    max-width:90%;
+
+
+    background:var(--glass);
+
+
+    backdrop-filter:blur(25px);
+
+
+    border-left:1px solid rgba(255,255,255,.15);
+
+
+    color:var(--ink);
+
+}
+
+
+
+
+.resource-panel .offcanvas-header {
+
+    padding:25px;
+
+}
+
+
+
+.resource-panel .offcanvas-title {
+
+    color:var(--ink);
+
+    font-size:22px;
+
+    font-weight:700;
+
+}
+
+
+
+.resource-panel .offcanvas-body {
+
+    padding:25px;
+
+}
+
+
+
+.resource-panel h6 {
+
+    margin-top:25px;
+
+    margin-bottom:12px;
+
+    color:var(--ink);
+
+    font-weight:700;
+
+}
+
+
+
+.resource-panel p,
+.resource-panel li,
+.resource-description {
+
+    color:var(--muted);
+
+    line-height:1.6;
+
+}
+
+
+
+.resource-panel ul {
+
+    padding-left:20px;
+
+}
+
+
+
+.resource-panel li {
+
+    margin-bottom:8px;
+
+}
+
+
+
+/* =========================
+   Close Button
+========================= */
+
+
+.resource-panel .btn-close {
+
+    opacity:.75;
+
+}
+
+
+
+.resource-panel .btn-close:hover {
+
+    opacity:1;
+
+}
+
+
+/* Light */
+
+:root[data-theme="light"] 
+.resource-panel .btn-close {
+
+    filter:none;
+
+}
+
+
+
+/* Dark */
+
+:root[data-theme="dark"] 
+.resource-panel .btn-close {
+
+    filter:invert(1);
+
+}
+
+
+
+/* =========================
+   Request Appointment Button
+========================= */
+
+
+.resource-panel .btn-primary {
+
+
+    color:#fff;
+
+
+    background:var(--accent);
+
+
+    border-color:var(--accent);
+
+
+}
+
+.resource-panel .btn-primary:hover {
+
+
+    color:#fff;
+
+
+    filter:brightness(1.1);
+
+
+}
+
+/* appointment button */
+
+.resource-panel .btn-primary {
+
+    color:#fff;
+
+    background:#1683ff;
+
+    border-color:#1683ff;
+
+}
+
+.resource-panel .form-label{
+
+    color:var(--ink);
+
+    font-weight:600;
+
+}
+
+
+.resource-panel .form-control{
+
+    color:var(--ink);
+
+    background:rgba(255,255,255,.08);
+
+    border-color:rgba(255,255,255,.15);
+
+}
+
+
+.resource-panel .form-control::placeholder{
+
+    color:var(--muted);
+
+}
+
+/* =========================
+   Responsive
+========================= */
+
+
+@media(max-width:900px){
+
+
+    .resources-grid {
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .resources-title-row {
+
+        flex-direction:column;
+
+    }
+
+
+}
+
+
+
+@media(max-width:600px){
+
+
+    .resource-panel {
+
+        width:100%;
+
+    }
+
+}
